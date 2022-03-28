@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SQL注入在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；2.使用参数化（Parameterized Query 或 Parameterized Statement）；3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重! 如何去判断 SQL注入漏洞 and 1&amp;#x">
+  <meta name="description" content="SQL注入“遇事不决，可问春风”      ——-烽火戏诸侯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2022/03/23/SQL-inject/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SQL注入在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；2.使用参数化（Parameterized Query 或 Parameterized Statement）；3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重! 如何去判断 SQL注入漏洞 and 1&amp;#x">
+<meta property="og:description" content="SQL注入“遇事不决，可问春风”      ——-烽火戏诸侯">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-23T11:38:43.172Z">
-<meta property="article:modified_time" content="2022-03-28T11:15:17.229Z">
+<meta property="article:modified_time" content="2022-03-28T11:53:23.652Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -155,7 +155,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：<br>1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；<br>2.使用参数化（Parameterized Query 或 Parameterized Statement）；<br>3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重!</p>
+        <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>“遇事不决，可问春风”      ——-烽火戏诸侯</p>
+<span id="more"></span>
+
+<p>在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：<br>1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；<br>2.使用参数化（Parameterized Query 或 Parameterized Statement）；<br>3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重!</p>
 <h3 id="如何去判断-SQL注入漏洞"><a href="#如何去判断-SQL注入漏洞" class="headerlink" title="如何去判断 SQL注入漏洞"></a><em><strong>如何去判断 SQL注入漏洞</strong></em></h3><ul>
 <li>and 1&#x3D;1 &#x2F; and 1&#x3D;2 回显页面不同</li>
 <li>单引号判断 ‘ 显示数据库错误信息或者页面回显不同</li>
