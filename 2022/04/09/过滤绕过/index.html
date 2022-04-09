@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>过滤绕过 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="过滤 绕过intval漏洞题目：ctf.show萌新计划web1  绕过函数intval($id)会从字符串$id的起始位置开始去数字碰到非数字就结束,当起始位置为非数字时则为0。比如intval(‘100a123’)&#x3D;100intval(‘a123’)&#x3D;0 所以我们只要任意非数字开头就可以了，但是又要满足sql语句所以有如下几种方式1.(1000)2.‘1000’  125&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="过滤绕过">
+<meta property="og:url" content="http://example.com/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="过滤 绕过intval漏洞题目：ctf.show萌新计划web1  绕过函数intval($id)会从字符串$id的起始位置开始去数字碰到非数字就结束,当起始位置为非数字时则为0。比如intval(‘100a123’)&#x3D;100intval(‘a123’)&#x3D;0 所以我们只要任意非数字开头就可以了，但是又要满足sql语句所以有如下几种方式1.(1000)2.‘1000’  125&amp;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-09T05:42:46.000Z">
+<meta property="article:modified_time" content="2022-04-09T05:43:32.163Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -146,355 +150,227 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-过滤绕过" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      过滤绕过
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/" class="archive-article-date">
+
+        
+        <a href="/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/" class="archive-article-date">
   	<time datetime="2022-04-09T05:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/">过滤绕过</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="过滤-绕过"><a href="#过滤-绕过" class="headerlink" title="过滤 绕过"></a>过滤 绕过</h1><h3 id="intval漏洞"><a href="#intval漏洞" class="headerlink" title="intval漏洞"></a>intval漏洞</h3><p>题目：<a target="_blank" rel="noopener" href="http://c4233d2d-2834-4407-ae82-502cf02d7c81.challenge.ctf.show/">ctf.show萌新计划web1</a></p>
+<ol>
+<li><p>绕过函数<br>intval($id)会从字符串$id的起始位置开始去数字碰到非数字就结束,当起始位置为非数字时则为0。<br>比如<br>intval(‘100a123’)&#x3D;100<br>intval(‘a123’)&#x3D;0</p>
+<p>所以我们只要任意非数字开头就可以了，但是又要满足sql语句<br>所以有如下几种方式<br>1.(1000)<br>2.‘1000’</p>
+</li>
+<li><p>125&lt;&lt;3</p>
+</li>
+<li><p>680|320</p>
+</li>
+<li><p>hex  0x3e8</p>
+</li>
+<li><p>id&#x3D;100 or id&#x3D;1000</p>
+</li>
+<li><p>?id&#x3D;~~1000</p>
+</li>
+<li><p>?id&#x3D;100%2B900</p>
+</li>
+<li><p>144^888</p>
+</li>
+<li><p>999+1 运算符 10*100 999-(-1)&#x2F;999–1&#x2F;999- -1</p>
+</li>
+<li><p>(1000)</p>
+</li>
+<li><p>0b1111101000（二进制）</p>
+</li>
+<li><p>sql注入构造  id&#x3D;1 or 1&#x3D;1#（万能密码显示所有）<br>id&#x3D;id#（显示所有）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%8C%89%E4%BD%8D%E4%B8%8E&spm=1001.2101.3001.7020">按位与</a> 992|8</p>
+</li>
+</ol>
+<h3 id="删库跑路"><a href="#删库跑路" class="headerlink" title="删库跑路"></a>删库跑路</h3><p>rm -rf &#x2F;*  是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Linux&spm=1001.2101.3001.7020">Linux</a>的一条指令，&#x2F;*代表根目录下所有路径，作用是删除根目录下所有文件，也就是删除系统中的所有文件</p>
+<ul>
+<li>-f    忽略不存在的文件，不提示</li>
+<li>-i    交互式删除</li>
+<li>-r    地柜删除</li>
+<li>-v    显示详细的步骤</li>
+</ul>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p>（参考<a target="_blank" rel="noopener" href="https://www.csdn.net/tags/MtTaEgwsMTQ0NDU4LWJsb2cO0O0O.html%EF%BC%89">https://www.csdn.net/tags/MtTaEgwsMTQ0NDU4LWJsb2cO0O0O.html）</a></p>
+<h4 id="1、过滤关键字"><a href="#1、过滤关键字" class="headerlink" title="1、过滤关键字"></a>1、过滤关键字</h4><p>（1）用<code>/**/</code>，&lt;&gt;，分割关键字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sel&lt;&gt;ect</span><br><span class="line">sel/**/ect</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>（2）根据过滤程度，有时还可用双写绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selselectect</span><br></pre></td></tr></table></figure>
 
+<p>（3）既然是过滤关键字，大小写应该都会被匹配过滤，所以大小写绕过一般是行不通的。</p>
+<p>（4）有时候还可以使用编码绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   url编码绕过</span><br><span class="line">16进制编码绕过</span><br><span class="line">ASCII编码绕过</span><br><span class="line">base</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、过滤逗号"><a href="#2、过滤逗号" class="headerlink" title="2、过滤逗号"></a>2、过滤逗号</h4><p>（1）简单注入可以使用join方法绕过</p>
+<p>原语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,2,3</span><br></pre></td></tr></table></figure>
+
+<p>join语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select * from (select 1)a join (select 2)b join (select 3)</span><br></pre></td></tr></table></figure>
+
+<p>（2）对于盲注的那几个函数substr(),mid(),limit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">substr和mid()可以使用from for的方法解决</span><br><span class="line"></span><br><span class="line">substr(str from pos for len) //在str中从第pos位截取len长的字符</span><br><span class="line"></span><br><span class="line">mid(str from pos for len)//在str中从第pos位截取len长的字符</span><br><span class="line"></span><br><span class="line">limit可以用offset的方法绕过</span><br><span class="line"></span><br><span class="line">limit 1 offset 1</span><br><span class="line"></span><br><span class="line">使用substring函数也可以绕过</span><br><span class="line">substring(str from pos) //返回字符串str的第pos个字符，索引从1开始</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、过滤空格"><a href="#3、过滤空格" class="headerlink" title="3、过滤空格"></a>3、过滤空格</h4><p>空格被过滤有以下几种方法绕过：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）双空格</span><br><span class="line">（2）/**/</span><br><span class="line">（3）用括号绕过</span><br><span class="line">（4）用回车代替 //ascii码为chr(13)&amp;chr(10)，url编码为%0d%0a</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、过滤等号"><a href="#4、过滤等号" class="headerlink" title="4、过滤等号"></a>4、过滤等号</h4><p>如果等号被过滤了我们可以用 like 代替</p>
+<h4 id="5、过滤大于小于号"><a href="#5、过滤大于小于号" class="headerlink" title="5、过滤大于小于号"></a>5、过滤大于小于号</h4><p>盲注中我们经常需要用到比较符，如果他们被过滤了，我们可以用以下几种方法绕过：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）greatest(n1,n2,n3,...)		//返回其中的最大值</span><br><span class="line">（2）strcmp(str1,str2)		//当str1=str2，返回0，当str1&gt;str2，返回1，当str1&lt;str2，返回-1</span><br><span class="line">（3）in 操作符</span><br><span class="line">（4）between   and		//选取介于两个值之间的数据范围。这些值可以是数值、文本或者日期。</span><br></pre></td></tr></table></figure>
+
+<h4 id="6、过滤分号"><a href="#6、过滤分号" class="headerlink" title="6、过滤分号"></a>6、过滤分号</h4><p> ?&gt; 代替分号</p>
+<h2 id="知识："><a href="#知识：" class="headerlink" title="知识："></a>知识：</h2><h4 id="cat命令："><a href="#cat命令：" class="headerlink" title="cat命令："></a>cat命令：</h4><p>命令用于连接文件并打印到标准输出设备上。</p>
+<h4 id="x2F-i-是不区分大小写"><a href="#x2F-i-是不区分大小写" class="headerlink" title="&#x2F;i 是不区分大小写"></a>&#x2F;i 是不区分大小写</h4><h4 id="Python-eval-函数"><a href="#Python-eval-函数" class="headerlink" title="Python eval() 函数"></a>Python eval() 函数</h4><p>执行一个字符串表达式，并返回表达式的值</p>
+<h4 id="PHP-preg-match-函数"><a href="#PHP-preg-match-函数" class="headerlink" title="PHP preg_match() 函数"></a>PHP preg_match() 函数</h4><p>检查一个串是否含有某种子串、将匹配的子串做替换或者从某个串中取出符合某个条件的子串</p>
+<h4 id="php-system函数-x2F-exec函数"><a href="#php-system函数-x2F-exec函数" class="headerlink" title="php system函数&#x2F; exec函数"></a>php system函数&#x2F; exec函数</h4><p>执行外部程序，并且显示输出</p>
+<p>在php语言中单引号串和双引号串的处理是不同的。双引号串中的内容可以被解释而且替换，而单引号串中的内容总被认为是普通字符。</p>
+<p>php中作为执行系统命令的函数有：</p>
+<p>system()<br>passthru()<br>exec()<br>shell_exec()<br>popen()<br>proc_open()<br>pcntl_exec()<br>反撇号</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>因风道感谢，情至笔载援<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/28/3-25-wp/" class="archive-article-date">
-  	<time datetime="2022-03-28T11:17:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/28/3-25-wp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3.25 wp</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/28/3-25-wp/">3.25 wp</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">wp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/25/photo-test/" class="archive-article-date">
-  	<time datetime="2022-03-25T12:41:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/25/photo-test/">photo test</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/24/%E8%80%81%E5%8F%9F%E6%89%A7%E5%89%91%E8%80%8C%E7%AB%8B/" class="archive-article-date">
-  	<time datetime="2022-03-24T12:59:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/24/%E8%80%81%E5%8F%9F%E6%89%A7%E5%89%91%E8%80%8C%E7%AB%8B/">老叟执剑而立</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">books</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/23/HTTP/" class="archive-article-date">
-  	<time datetime="2022-03-23T13:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/23/HTTP/">HTTP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/23/SQL-inject/" class="archive-article-date">
-  	<time datetime="2022-03-23T11:38:43.172Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-23</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/22/Flask/" class="archive-article-date">
-  	<time datetime="2022-03-22T14:57:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/22/Flask/">Flask</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">flask</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/22/Pentest/" class="archive-article-date">
-  	<time datetime="2022-03-22T14:43:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/22/Pentest/">Pentest</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pentest</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/17/kylin/" class="archive-article-date">
-  	<time datetime="2022-03-17T14:28:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/17/kylin/">kylin</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/16/HTML-CSS/" class="archive-article-date">
-  	<time datetime="2022-03-16T15:26:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/16/HTML-CSS/">HTML CSS</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">html css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -518,8 +394,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
