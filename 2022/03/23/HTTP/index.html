@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>HTTP | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="http协议请求由三部分组成，分别是：请求行、消息报头、请求正文。 请求行：以一个方法符号开头，以空格分开，后面跟着请求的URI和协议的版本。">
+  <meta name="description" content="HTTP协议http协议请求由三部分组成，分别是：请求行、消息报头、请求正文。 请求行：以一个方法符号开头，以空格分开，后面跟着请求的URI和协议的版本。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP">
 <meta property="og:url" content="http://example.com/2022/03/23/HTTP/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="http协议请求由三部分组成，分别是：请求行、消息报头、请求正文。 请求行：以一个方法符号开头，以空格分开，后面跟着请求的URI和协议的版本。">
+<meta property="og:description" content="HTTP协议http协议请求由三部分组成，分别是：请求行、消息报头、请求正文。 请求行：以一个方法符号开头，以空格分开，后面跟着请求的URI和协议的版本。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-23T13:22:36.000Z">
-<meta property="article:modified_time" content="2022-03-24T14:26:04.674Z">
+<meta property="article:modified_time" content="2022-09-18T01:54:40.294Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="http">
 <meta name="twitter:card" content="summary">
@@ -171,17 +171,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>http协议请求由三部分组成，分别是：请求行、消息报头、请求正文。</p>
+        <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><p>http协议请求由三部分组成，分别是：请求行、消息报头、请求正文。</p>
 <p>请求行：以一个方法符号开头，以空格分开，后面跟着请求的URI和协议的版本。</p>
 <span id="more"></span>
 
-<p>![请求方法](HTTP&#x2F;下载 (5).png)</p>
-<h4 id="curl用法"><a href="#curl用法" class="headerlink" title="curl用法"></a>curl用法</h4><p>　　curl是一个和服务器交互信息（发送和获取信息）的命令行工具。</p>
+<h3 id="curl用法"><a href="#curl用法" class="headerlink" title="curl用法"></a>curl用法</h3><p>　　curl是一个和服务器交互信息（发送和获取信息）的命令行工具。</p>
 <p>　　　　查看http响应头：curl -i <a target="_blank" rel="noopener" href="http://www.xxx.com/">http://www.xxx.com</a></p>
 <p>　　　　查看交互过程： curl -v <a target="_blank" rel="noopener" href="http://www.xxx.com/">http://www.xxx.com</a></p>
 <p>　　　　GET请求： curl -X GET <a target="_blank" rel="noopener" href="http://www.xxx.com/">http://www.xxx.com</a> （当发起http请求时，curl会默认发起GET请求，也可以”-X GET”方式指定。）</p>
 <p>　　　　POST请求： curl -X POST <a target="_blank" rel="noopener" href="http://www.xxx.com/">http://www.xxx.com</a> -d “参数”（当使用POST请求方式，需要通过指定“-d”，向服务器传递数据。）</p>
 <p>　　　　调试：curl -v <a target="_blank" rel="noopener" href="https://www.xxx.com/">https://www.xxx.com</a>   （-v参数输出通信的整个过程，用于调试。）</p>
+<h3 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h3><p>是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器该网页是从哪个页面链接过来的，服务器因此可以获得一些信息用于处理。Referer 常用在防盗链和防恶意请求中。</p>
+<p>比如我在<a target="_blank" rel="noopener" href="http://www.sojson.com/">www.sojson.com</a> 里有一个<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 链接，那么点击这个<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> ，它的header 信息里就有：</p>
+<p>Referer&#x3D;<a target="_blank" rel="noopener" href="https://www.sojson.com/">https://www.sojson.com</a></p>
+<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><p>用户代理，简称 UA，它是一个特殊字符串头，使得服务器能够识别客户使用的操作系统及版本、CPU 类型、浏览器及浏览器版本、浏览器渲染引擎、浏览器语言、浏览器插件等。一些网站常常通过判断 UA 来给不同的操作系统、不同的浏览器发送不同的页面，因此可能造成某些页面无法在某个浏览器中正常显示，但通过伪装 UA 可以<strong>绕过检测。</strong></p>
+<h3 id="X-Forwarded-For"><a href="#X-Forwarded-For" class="headerlink" title="X-Forwarded-For"></a>X-Forwarded-For</h3><p>用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段。<br>当今多数缓存服务器的用户为大型ISP，为了通过缓存的方式来降低他们的外部带宽，他们常常通过鼓励或强制用户使用代理服务器来接入互联网。有些情况下，这些代理服务器是透明代理，用户甚至不知道自己正在使用代理上网。<br>如果没有XFF或者另外一种相似的技术，所有通过代理服务器的连接只会显示代理服务器的IP地址，而非连接发起的原始IP地址，这样的代理服务器实际上充当了匿名服务提供者的角色，如果连接的原始IP地址不可得，恶意访问的检测与预防的难度将大大增加。XFF的有效性依赖于代理服务器提供的连接原始IP地址的真实性，因此，XFF的有效使用应该保证代理服务器是可信的，比如可以通过创建可信服务器白名单的方式。</p>
+<p>这一HTTP头一般格式如下:</p>
+<p>X-Forwarded-For: client1, proxy1, proxy2, proxy3</p>
+<p>其中的值通过一个 逗号+空格 把多个IP地址区分开, 最左边(client1)是最原始客户端的IP地址, 代理服务器每成功收到一个请求，就把请求来源IP地址添加到右边。 在上面这个例子中，这个请求成功通过了三台代理服务器：proxy1, proxy2 及 proxy3。请求由client1发出，到达了proxy3(proxy3可能是请求的终点)。请求刚从client1中发出时，XFF是空的，请求被发往proxy1；通过proxy1的时候，client1被添加到XFF中，之后请求被发往proxy2;通过proxy2的时候，proxy1被添加到XFF中，之后请求被发往proxy3；通过proxy3时，proxy2被添加到XFF中，之后请求的的去向不明，如果proxy3不是请求终点，请求会被继续转发。</p>
+<p>鉴于伪造这一字段非常容易，应该谨慎使用X-Forwarded-For字段。正常情况下XFF中最后一个IP地址是最后一个代理服务器的IP地址, 这通常是一个比较可靠的信息来源。</p>
+<h3 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h3><ol>
+<li>看源码，找到一个链接：href&#x3D;”Secret.php” 打开</li>
+</ol>
+<p>​    有一句 It doesn’t come from ‘<a target="_blank" rel="noopener" href="https://sycsecret.buuoj.cn&/#39;">https://Sycsecret.buuoj.cn&#39;</a></p>
+<ol start="2">
+<li><strong>考虑referer</strong></li>
+<li>抓包 修改referer为 <a target="_blank" rel="noopener" href="https://sycsecret.buuoj.cn/">https://Sycsecret.buuoj.cn</a></li>
+<li>回显 Please use “Syclover” browser</li>
+<li>修改user agent 为 Syclover</li>
+<li>回显 No!!! you can only read this locally!!!</li>
+<li>修改 X-Forwarded-For ： 127.0.0.1</li>
+<li>flag{95df6075-4082-474b-a2fc-bd2910acb888}</li>
+</ol>
 
       
 
@@ -435,7 +456,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color3">pentest</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -443,11 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pentest</a>
+                <a href="javascript:void(0)" class="js-tag color1">share</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">share</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">

