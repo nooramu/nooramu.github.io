@@ -16,7 +16,7 @@
 <meta property="og:description" content="python">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-06T04:11:59.000Z">
-<meta property="article:modified_time" content="2023-09-10T14:03:07.903Z">
+<meta property="article:modified_time" content="2023-09-12T13:08:40.276Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python_study_note">
 <meta name="twitter:card" content="summary">
@@ -242,10 +242,59 @@
 </li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">查找：</span><br><span class="line">s.index(<span class="string">&#x27;hi&#x27;</span>) 第一次出现，没有报错   s.rindex(<span class="string">&#x27;hi&#x27;</span>)   最后一次出现</span><br><span class="line">s.find(<span class="string">&#x27;hi&#x27;</span>)  第一次出现，没有为-<span class="number">1</span>   s.rfind(<span class="string">&#x27;hi&#x27;</span>)    最后一次出现 </span><br><span class="line">分割：</span><br><span class="line">lst = s.split(sep=<span class="string">&#x27;|&#x27;</span>, maxsplit=<span class="number">1</span>)  从左往右，默认分隔符为空格，分割成列表</span><br><span class="line">替换： s.replace(<span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;java&#x27;</span>，<span class="number">2</span>)  java替换python，换<span class="number">2</span>次</span><br><span class="line">合并： <span class="string">&#x27;|&#x27;</span>.join(lst)  用|将lst中的元素连接成<span class="built_in">str</span></span><br><span class="line">切片： s1 = s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">2</span>]   从<span class="number">0</span>开始到<span class="number">4</span>，步长为<span class="number">2</span></span><br><span class="line"></span><br><span class="line">格式化</span><br><span class="line"><span class="number">1.</span> <span class="built_in">print</span>(<span class="string">&#x27;我叫%s,今年%d岁&#x27;</span> % (name,age))</span><br><span class="line"><span class="number">2.</span> <span class="built_in">print</span>(<span class="string">&#x27;我叫&#123;0&#125;，今年&#123;1:10.3&#125;岁&#x27;</span>.<span class="built_in">format</span>(name,age))  <span class="number">.3</span>表示一共<span class="number">3</span>位数，宽度为<span class="number">10</span></span><br><span class="line">											     <span class="number">.3</span>f表示<span class="number">3</span>位小数</span><br><span class="line"><span class="number">3.</span> <span class="built_in">print</span>(<span class="string">f&#x27;我叫<span class="subst">&#123;name&#125;</span>,今年<span class="subst">&#123;age&#125;</span>岁&#x27;</span>)</span><br><span class="line"></span><br><span class="line">编码</span><br><span class="line">byte = s.encode(encoding=<span class="string">&#x27;GBK&#x27;</span>)      一个中文占<span class="number">2</span>个字节</span><br><span class="line">byte = s.encode(encoding=<span class="string">&#x27;UTF-8&#x27;</span>)    一个中文占<span class="number">3</span>个字节</span><br><span class="line">解码</span><br><span class="line">byte.decode(encoding=<span class="string">&#x27;GBK&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><em><strong><u>2023.9.11</u></strong></em></p>
 </li>
 <li><p>函数</p>
+<p>参数</p>
+<p>个数可变的位置参数：    def fun(*args):</p>
+<p>个数可变的关键字形参：def fun(**args):</p>
+<p>当两者都有时，个数可变的位置参数要放在个数可变的关键字形参之前</p>
+<p>def  fun(a,b,*,c,d):         *之后的参数只能采用关键字传参</p>
+<p><em><strong><u>2023.9.12</u></strong></em></p>
 </li>
 <li><p>bug</p>
+<p>异常捕获</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	n1 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入一个整数&#x27;</span>))</span><br><span class="line">	n2 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入另一个整数&#x27;</span>))</span><br><span class="line">	result = n1/n2</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;结果为&#x27;</span>,result)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:    <span class="comment">#除数为0的错误</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;除数不能为0&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> ValueError:           <span class="comment">#类型错误</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;不能将字符串转换为数字&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> BaseExcepion <span class="keyword">as</span> e:</span><br><span class="line">	<span class="built_in">print</span>(e)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;over!&#x27;</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;无论是否产生异常都会执行&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">traceback模块</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">	traceback.print_exc()</span><br></pre></td></tr></table></figure>
+
+<p>常见异常</p>
+<table>
+<thead>
+<tr>
+<th>error</th>
+<th>discription</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ZeroDivisionError</td>
+<td>除0</td>
+</tr>
+<tr>
+<td>IndexError</td>
+<td>序列中没有此索引</td>
+</tr>
+<tr>
+<td>KeyError</td>
+<td>映射中没有这个键</td>
+</tr>
+<tr>
+<td>NameError</td>
+<td>未声明&#x2F;初始化对象</td>
+</tr>
+<tr>
+<td>SyntaxError</td>
+<td>python语法错误</td>
+</tr>
+<tr>
+<td>ValueError</td>
+<td>传入无效的参数</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>类与对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    native_pace = <span class="string">&#x27;盗&#x27;</span> <span class="comment">#直接写在类内的，叫类属性</span></span><br><span class="line">    <span class="comment">#初始化方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>):  </span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">	<span class="comment">#静态方法</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">method</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;静态方法中不能用self&#x27;</span>)</span><br><span class="line">    <span class="comment">#类方法</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clasm</span>(<span class="params">cls</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="comment">#实例对象    </span></span><br><span class="line">stu = Student(<span class="string">&#x27;张三&#x27;</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li></li>
 </ol>
