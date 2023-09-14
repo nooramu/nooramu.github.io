@@ -16,7 +16,7 @@
 <meta property="og:description" content="python">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-06T04:11:59.000Z">
-<meta property="article:modified_time" content="2023-09-13T12:41:15.767Z">
+<meta property="article:modified_time" content="2023-09-14T14:08:44.443Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python_study_note">
 <meta name="twitter:card" content="summary">
@@ -341,10 +341,173 @@
 <p>实例变量的赋值操作：  实际上指向同一个对象</p>
 <p>浅拷贝：不拷贝子对象，原对象和拷贝对象有同一个子对象 computer2 &#x3D; copy.copy(computer)</p>
 <p>深拷贝：拷贝子对象  computer3 &#x3D; copy.deepcopy(computer)</p>
+<p><em><strong><u>2023.9.14</u></strong></em></p>
 </li>
 <li><p>模块</p>
+<p>只有在点击该模块时才会执行：  </p>
+<p>if _ _ name _ _ &#x3D;&#x3D; ‘_ _ main _ _’:</p>
 </li>
 <li><p>文件</p>
+<p>编码格式：</p>
+<p>python解释器使用的是Unicode（内存)</p>
+<p>.py文件在磁盘是使用UTF-8存储（外存）</p>
+<p>file &#x3D; open(filename [,mode,encoding] )</p>
+<p>程序—————————output—————————–&gt;文件</p>
+<p>(对象)&lt;————————input—–————————–</p>
+<table>
+<thead>
+<tr>
+<th>打开模式</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td align="left">以只读模式打开文件，文件的指针将会放在文件的开头</td>
+</tr>
+<tr>
+<td>w</td>
+<td align="left">以只写模式打开文件，如果文件不存在则创建，如果文件存在，则覆盖原有内容，文件指针在文件的开头</td>
+</tr>
+<tr>
+<td>a</td>
+<td align="left">以追加模式打开文件，如果文件不存在则创建，文件指针在文件开头，如果文件存在，则在文件末尾追加内容，文件指针在原文件末尾</td>
+</tr>
+<tr>
+<td>b</td>
+<td align="left">以二进制方式打开文件，不能单独使用，需要与共它模式一起使用，rb，或者wb</td>
+</tr>
+<tr>
+<td>+</td>
+<td align="left">以读写方式打开文件，不能单独使用，需要与其它模式一起使用，a+</td>
+</tr>
+</tbody></table>
+<p>文件对象的常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read([size])</td>
+<td>从文件中读取size个字节或字符的内容返回。若省略[size],则读取到文件末尾，即一次读取文件所有内容</td>
+</tr>
+<tr>
+<td>readline()</td>
+<td>从文本文件中读取一行内容</td>
+</tr>
+<tr>
+<td>readlines()</td>
+<td>把文本文件中每一行都作为独立的字符串对象，并将这些对象放入列表返回</td>
+</tr>
+<tr>
+<td>write(str)</td>
+<td>将宇符串str内容写入文件</td>
+</tr>
+<tr>
+<td>writelines(s list)</td>
+<td>将字符串列表s_list写入文本文件，不添加换行符</td>
+</tr>
+<tr>
+<td>seek(offset[, whence])</td>
+<td>把文件指针移动到新的位置，offset表示相对于whence的位置:<br/>offset:为正往结束方向移动，为负往开始处向移动<br/>whence不同的值代表不同含义:<br/>0: 从文件头开始计算(默认值)<br/>1: 从当前位置开始计算<br/>2:从文件尾开始计算</td>
+</tr>
+<tr>
+<td>tell()</td>
+<td>返回文件指针的当前位置</td>
+</tr>
+<tr>
+<td>flush ()</td>
+<td>把缓冲区的内容写入文件，但不关闭文件</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>把缓冲区的内容写入文件，同时关闭文件，释放文件对象相关资源</td>
+</tr>
+</tbody></table>
+<p>with自动管理上下文资源，确保文件关闭</p>
+<p>with open(‘logo.png’,’rb) as scr_file:</p>
+<p>with自动调用_ enter _(),  _ exit _()</p>
+<p>os模块:</p>
+<p>import os</p>
+<p>os.system(‘notepad.exe’)</p>
+<p>os.startfile(‘C:\\Program Files\Tencent\qq.exe’)</p>
+<p>os模块操作目录相关函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getcwd()</td>
+<td>返回当前的工作目录</td>
+</tr>
+<tr>
+<td>listdir(path)</td>
+<td>返回指定路径下的文件和目录信息</td>
+</tr>
+<tr>
+<td>mkdir(path[,model)</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>makedirs(path1&#x2F;path2…[.mode])</td>
+<td>创建多级目录</td>
+</tr>
+<tr>
+<td>rmdir(path)</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>removedirs(pathl&#x2F;path2……)</td>
+<td>删除多级目录</td>
+</tr>
+<tr>
+<td>chdir(path)</td>
+<td>将path设置为当前工作目录</td>
+</tr>
+</tbody></table>
+<p>os.path模块操作目录相关函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abspath(path)</td>
+<td>用于获取文件或目录的绝对路径</td>
+</tr>
+<tr>
+<td>exists(path)</td>
+<td>用于判断文件或目录是否存在，如果存在返回True,否则返回False</td>
+</tr>
+<tr>
+<td>join(path,name)</td>
+<td>将目录与目录或者文件名拼接起来</td>
+</tr>
+<tr>
+<td>splitext ()</td>
+<td>分离文件名和扩展名</td>
+</tr>
+<tr>
+<td>basename(path)</td>
+<td>从一个目录中提取文件名</td>
+</tr>
+<tr>
+<td>dirname(path)</td>
+<td>从一个路径中提取文件路径，不包括文件名</td>
+</tr>
+<tr>
+<td>isdir(path)</td>
+<td>用于判断是否为路径</td>
+</tr>
+</tbody></table>
 </li>
 </ol>
 
@@ -583,15 +746,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">html css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pentest</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,15 +762,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pentest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">share</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wp</a>
+                <a href="javascript:void(0)" class="js-tag color3">python_study_note</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">python_study_note</a>
+                <a href="javascript:void(0)" class="js-tag color3">wp</a>
               </li>
              
               <li class="article-tag-list-item">
