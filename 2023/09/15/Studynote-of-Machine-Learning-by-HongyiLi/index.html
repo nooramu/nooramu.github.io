@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="梯度下降优化loss">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="e:/typora/WEBa429e3fd2e724180070a7c3c11b0d179-16952179302699">
-<meta property="og:image" content="e:/typora/WEBb55af161c7354b7def364b256ceea242">
-<meta property="og:image" content="e:/typora/WEB39dc9665ebf0e47ad793ebf6a000605c">
-<meta property="og:image" content="e:/typora/WEB159a7c4924067448c2755f47a5dcaf06">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBa429e3fd2e724180070a7c3c11b0d179?method=download&shareKey=4956f2d8a63e0db09f6ce062f968cd4a">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBb55af161c7354b7def364b256ceea242?method=download&shareKey=7bd21dc01d56543c5f6d2960d9648da8">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB39dc9665ebf0e47ad793ebf6a000605c?method=download&shareKey=793229708734ab4be7a58ac821b26d82">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB159a7c4924067448c2755f47a5dcaf06?method=download&shareKey=51fc7dec7f66ff2e8481f4f4387ce263">
 <meta property="article:published_time" content="2023-09-15T13:58:39.000Z">
-<meta property="article:modified_time" content="2023-09-20T13:53:46.474Z">
+<meta property="article:modified_time" content="2023-09-20T14:13:39.157Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Machine_Learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="e:/typora/WEBa429e3fd2e724180070a7c3c11b0d179-16952179302699">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBa429e3fd2e724180070a7c3c11b0d179?method=download&shareKey=4956f2d8a63e0db09f6ce062f968cd4a">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -178,18 +178,18 @@
       
         <h2 id="梯度下降优化loss"><a href="#梯度下降优化loss" class="headerlink" title="梯度下降优化loss"></a>梯度下降优化loss</h2><span id="more"></span>
 
-<img src="E:/typora/WEBa429e3fd2e724180070a7c3c11b0d179-16952179302699" alt="3" style="zoom:33%;" />
+<img src="https://note.youdao.com/yws/api/personal/file/WEBa429e3fd2e724180070a7c3c11b0d179?method=download&shareKey=4956f2d8a63e0db09f6ce062f968cd4a" alt="1" style="zoom:33%;" />
 
-<h2 id="sigmod"><a href="#sigmod" class="headerlink" title="sigmod"></a>sigmod</h2><img src="E:/typora/WEBb55af161c7354b7def364b256ceea242" alt="4" style="zoom:33%;" />
+<h2 id="sigmod"><a href="#sigmod" class="headerlink" title="sigmod"></a>sigmod</h2><img src="https://note.youdao.com/yws/api/personal/file/WEBb55af161c7354b7def364b256ceea242?method=download&shareKey=7bd21dc01d56543c5f6d2960d9648da8" alt="2" style="zoom:33%;" />
 
 <p>用piecewise Linear 的 Curves逼近任何连续曲线，而piecewise Linear 的 Curves（红线）又可以用许多蓝色的function组合</p>
 <p>用sigmoid function来逼近这个蓝色的function（这个蓝色的function叫做hard sigmoid）</p>
-<img src="E:/typora/WEB39dc9665ebf0e47ad793ebf6a000605c" alt="2" style="zoom:33%;" />
+<img src="https://note.youdao.com/yws/api/personal/file/WEB39dc9665ebf0e47ad793ebf6a000605c?method=download&shareKey=793229708734ab4be7a58ac821b26d82" alt="3" style="zoom:33%;" />
 
 <p>调整b ,w ,c 得到各式各样的sigmoid函数</p>
 <p>所以上面的 red curve ：<br>$$<br>y &#x3D; b + \sum_{i}  c_i \times sigmoid(b_i + w_i \times x_1)<br>$$<br>多个features ( x ) 的情况：<br>$$<br>y &#x3D; b + \sum_{i}  c_i \times sigmoid(b_i + \sum <em>j w</em>{ij} \times x_j)<br>$$</p>
 <h2 id="deep-learning"><a href="#deep-learning" class="headerlink" title="deep learning"></a>deep learning</h2><h3 id="step-1-define-a-set-of-function"><a href="#step-1-define-a-set-of-function" class="headerlink" title="step 1: define a set of function"></a>step 1: define a set of function</h3><h4 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network :"></a>Neural Network :</h4><p>different connection leads to different network structures<br>$$<br>Network\ parameter\ \theta: all\ the\ weight\ and\ biases\ in\ the\ \ “neurons”<br>$$</p>
-<h4 id="Fully-Connect-Feedforward-Network"><a href="#Fully-Connect-Feedforward-Network" class="headerlink" title="Fully Connect Feedforward Network"></a>Fully Connect Feedforward Network</h4><img src="E:/typora/WEB159a7c4924067448c2755f47a5dcaf06" alt="1" style="zoom: 33%;" />
+<h4 id="Fully-Connect-Feedforward-Network"><a href="#Fully-Connect-Feedforward-Network" class="headerlink" title="Fully Connect Feedforward Network"></a>Fully Connect Feedforward Network</h4><img src="https://note.youdao.com/yws/api/personal/file/WEB159a7c4924067448c2755f47a5dcaf06?method=download&shareKey=51fc7dec7f66ff2e8481f4f4387ce263" alt="4" style="zoom:33%;" />
 
 <p>一个neural network做的事情就是一连串的vector 乘 matrix，再加vector：<br>$$<br>y &#x3D; \sigma(W^L … \sigma(W^2\sigma(W^1x+b^1)+b^2)…+b^L)<br>$$<br>Given network structure, define a <strong>function set</strong></p>
 <p>input layer  ——–&gt;    hidden layer   ——&gt;  output layer</p>
