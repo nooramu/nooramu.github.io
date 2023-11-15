@@ -148,6 +148,126 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Ajax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/15/Ajax/">Ajax</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/15/Ajax/" class="archive-article-date">
+  	<time datetime="2023-11-15T04:00:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h2 id="局部刷新需要的技术："><a href="#局部刷新需要的技术：" class="headerlink" title="局部刷新需要的技术："></a>局部刷新需要的技术：</h2><ol>
+<li>javascript : 创建XMLHttpRequest对象</li>
+<li>dom : 处理dom, 更新select的数据</li>
+<li>css</li>
+<li>servlet : 服务器端</li>
+<li>json</li>
+</ol>
+<p>以上技术综合起来叫做Ajax，使用Ajax实现局部刷新</p>
+<h2 id="异步请求对象"><a href="#异步请求对象" class="headerlink" title="异步请求对象"></a>异步请求对象</h2><p> 在<strong>局部刷新</strong>中，使用异步请求对象请求数据。</p>
+<h3 id="异步对象XMLHttpRequest"><a href="#异步对象XMLHttpRequest" class="headerlink" title="异步对象XMLHttpRequest"></a>异步对象XMLHttpRequest</h3><ol>
+<li><p>主要负责发起请求，传递请求的参数，并从服务器接收数据。</p>
+<p>var xhr &#x3D; XMLHttpRequest();</p>
+</li>
+<li><p>方法</p>
+<ol>
+<li><p>open(请求方式, 服务器端的访问地址, 异步还是同步)</p>
+<p>eg. xhr.open(“get”, “loginServlet”, true);</p>
+</li>
+<li><p>send() 使用异步对象发送请求</p>
+</li>
+</ol>
+</li>
+<li><p>属性</p>
+<ol>
+<li><p>readyState属性 : 请求的状态</p>
+<p><strong>0</strong> : 表示创建异步对象时的状态， new XMLHttpRequest();</p>
+<p><strong>1</strong> : 表示初始异步对象的请求参数。如当执行open()方法时。</p>
+<p><strong>2</strong> : 使用send()方法发送请求时。</p>
+<p><strong>3</strong> : 使用异步对象从服务器接受了数据</p>
+<p><strong>4</strong> : 异步对象接受了数据，并在异步对象内部处理完成后。</p>
+</li>
+<li><p>status属性 : 表示网络的状态，和Http的状态码对应</p>
+<p>200 : 请求成功</p>
+<p>404 : 服务器资源没有找到</p>
+<p>500 : 服务器内部代码有错误</p>
+</li>
+<li><p>responseText属性 : 表示服务器端返回的数据</p>
+<p>eg. var data &#x3D; xhr.responseText;</p>
+</li>
+</ol>
+</li>
+<li><p>使用步骤</p>
+<ol>
+<li>创建</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Ajax</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/15/Ajax/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JS浅记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -839,82 +959,6 @@
 
 
   
-    <article id="post-Studynote-of-Machine-Learning-by-HongyiLi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/15/Studynote-of-Machine-Learning-by-HongyiLi/">Studynote of Machine_Learning by HongyiLi</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/15/Studynote-of-Machine-Learning-by-HongyiLi/" class="archive-article-date">
-  	<time datetime="2023-09-15T13:58:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="李宏毅机器学习笔记"><a href="#李宏毅机器学习笔记" class="headerlink" title="李宏毅机器学习笔记"></a>李宏毅机器学习笔记</h1><h2 id="梯度下降优化loss"><a href="#梯度下降优化loss" class="headerlink" title="梯度下降优化loss"></a>梯度下降优化loss</h2>
-        
-          <a class="article-more-a" href="/2023/09/15/Studynote-of-Machine-Learning-by-HongyiLi/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine_Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/15/Studynote-of-Machine-Learning-by-HongyiLi/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1061,6 +1105,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Ajax</a>
               </li>
             
             <div class="clearfix"></div>
