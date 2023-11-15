@@ -168,54 +168,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h2 id="局部刷新需要的技术："><a href="#局部刷新需要的技术：" class="headerlink" title="局部刷新需要的技术："></a>局部刷新需要的技术：</h2><ol>
-<li>javascript : 创建XMLHttpRequest对象</li>
-<li>dom : 处理dom, 更新select的数据</li>
-<li>css</li>
-<li>servlet : 服务器端</li>
-<li>json</li>
-</ol>
-<p>以上技术综合起来叫做Ajax，使用Ajax实现局部刷新</p>
-<h2 id="异步请求对象"><a href="#异步请求对象" class="headerlink" title="异步请求对象"></a>异步请求对象</h2><p> 在<strong>局部刷新</strong>中，使用异步请求对象请求数据。</p>
-<h3 id="异步对象XMLHttpRequest"><a href="#异步对象XMLHttpRequest" class="headerlink" title="异步对象XMLHttpRequest"></a>异步对象XMLHttpRequest</h3><ol>
-<li><p>主要负责发起请求，传递请求的参数，并从服务器接收数据。</p>
-<p>var xhr &#x3D; XMLHttpRequest();</p>
-</li>
-<li><p>方法</p>
-<ol>
-<li><p>open(请求方式, 服务器端的访问地址, 异步还是同步)</p>
-<p>eg. xhr.open(“get”, “loginServlet”, true);</p>
-</li>
-<li><p>send() 使用异步对象发送请求</p>
-</li>
-</ol>
-</li>
-<li><p>属性</p>
-<ol>
-<li><p>readyState属性 : 请求的状态</p>
-<p><strong>0</strong> : 表示创建异步对象时的状态， new XMLHttpRequest();</p>
-<p><strong>1</strong> : 表示初始异步对象的请求参数。如当执行open()方法时。</p>
-<p><strong>2</strong> : 使用send()方法发送请求时。</p>
-<p><strong>3</strong> : 使用异步对象从服务器接受了数据</p>
-<p><strong>4</strong> : 异步对象接受了数据，并在异步对象内部处理完成后。</p>
-</li>
-<li><p>status属性 : 表示网络的状态，和Http的状态码对应</p>
-<p>200 : 请求成功</p>
-<p>404 : 服务器资源没有找到</p>
-<p>500 : 服务器内部代码有错误</p>
-</li>
-<li><p>responseText属性 : 表示服务器端返回的数据</p>
-<p>eg. var data &#x3D; xhr.responseText;</p>
-</li>
-</ol>
-</li>
-<li><p>使用步骤</p>
-<ol>
-<li>创建</li>
-</ol>
-</li>
-</ol>
-
+        <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h2 id="局部刷新需要的技术："><a href="#局部刷新需要的技术：" class="headerlink" title="局部刷新需要的技术："></a>局部刷新需要的技术：</h2>
+        
+          <a class="article-more-a" href="/2023/11/15/Ajax/#more">more >></a>
+        
       
 
       
