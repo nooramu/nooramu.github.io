@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: Spider | Hexo</title>
+  <title>vue_create | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/tags/Spider/index.html">
+  <meta name="description" content="已有node, npm 安装vue-cli: 1npm i -g @vue&#x2F;cli-init">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue_create">
+<meta property="og:url" content="http://example.com/2023/11/28/vue-create/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="已有node, npm 安装vue-cli: 1npm i -g @vue&#x2F;cli-init">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-11-28T11:33:51.000Z">
+<meta property="article:modified_time" content="2023-11-28T11:48:24.951Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -146,212 +151,216 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vue-create" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue_create
+    </h1>
+  
+
+        
+        <a href="/2023/11/28/vue-create/" class="archive-article-date">
+  	<time datetime="2023-11-28T11:33:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>已有node, npm 安装vue-cli:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g @vue/cli-init </span><br></pre></td></tr></table></figure></li>
+</ol>
+<span id="more"></span>
+
+<ol start="2">
+<li><p>创建项目:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack vue01</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd vue01</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除components文件夹下的helloworld组件，清楚App.vue下的样式</p>
+</li>
+<li><p>安装路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router --legacy-peer-deps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在src文件夹创建一个routers的文件夹，然后再routers文件夹下创建一个index.js文件，写入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Router</span> <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span></span><br><span class="line"><span class="comment">// 这里导入可以让让用户访问的组件</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Router</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Router</span>(&#123;</span><br><span class="line">  <span class="comment">// 设置路由模式为‘history’，去掉默认的#</span></span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;history&quot;</span>,</span><br><span class="line">  <span class="attr">routes</span>:[</span><br><span class="line">    <span class="comment">// 路由列表</span></span><br><span class="line"></span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在main.js中添加</p>
+</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import router from &#x27;./routers&#x27;</span><br><span class="line">...</span><br><span class="line">new Vue(&#123;</span><br><span class="line">	el:&#x27;#app&#x27;,router,</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li><p>在app.vue中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">	&lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入Elementui:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install element-ui --legacy-peer-deps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在main.js中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import ElementUI from &#x27;element-ui&#x27;;</span><br><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br><span class="line">...</span><br><span class="line">Vue.use(ElementUI):</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入axios:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios --legacy-peer-deps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在main.js文件中，导入axios，并把它挂载到vue中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import axios from &#x27;axios&#x27;</span><br><span class="line"></span><br><span class="line">Vue.prototype.axios = axios</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建组件，在components文件夹创建一个vue文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    //在这写html</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name:&#x27;home&#x27;,</span><br><span class="line">    data:function () &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">         // 这里是data数据</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">/*这里写css代码*/</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在index.js中写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import tables from &#x27;@/components/tables&#x27;</span><br><span class="line">...</span><br><span class="line">export default new Router(&#123;</span><br><span class="line">	mode:&#x27;history&#x27;,</span><br><span class="line">	routes:[</span><br><span class="line">		&#123;</span><br><span class="line">			path:&#x27;/tables&#x27;,</span><br><span class="line">			name:&#x27;tables&#x27;,</span><br><span class="line">			components:tables</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//element.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="title class_">Pagination</span>,</span><br><span class="line">  <span class="title class_">Dialog</span>,</span><br><span class="line">  <span class="title class_">Autocomplete</span>,</span><br><span class="line">  <span class="title class_">Dropdown</span>,</span><br><span class="line">  <span class="title class_">DropdownMenu</span>,</span><br><span class="line">  <span class="title class_">DropdownItem</span>,</span><br><span class="line">  <span class="title class_">Menu</span>,</span><br><span class="line">  <span class="title class_">Submenu</span>,</span><br><span class="line">  <span class="title class_">MenuItem</span>,</span><br><span class="line">  <span class="title class_">MenuItemGroup</span>,</span><br><span class="line">  <span class="title class_">Input</span>,</span><br><span class="line">  <span class="title class_">InputNumber</span>,</span><br><span class="line">  <span class="title class_">Radio</span>,</span><br><span class="line">  <span class="title class_">RadioGroup</span>,</span><br><span class="line">  <span class="title class_">RadioButton</span>,</span><br><span class="line">  <span class="title class_">Checkbox</span>,</span><br><span class="line">  <span class="title class_">CheckboxButton</span>,</span><br><span class="line">  <span class="title class_">CheckboxGroup</span>,</span><br><span class="line">  <span class="title class_">Switch</span>,</span><br><span class="line">  <span class="title class_">Select</span>,</span><br><span class="line">  <span class="title class_">Option</span>,</span><br><span class="line">  <span class="title class_">OptionGroup</span>,</span><br><span class="line">  <span class="title class_">Button</span>,</span><br><span class="line">  <span class="title class_">ButtonGroup</span>,</span><br><span class="line">  <span class="title class_">Table</span>,</span><br><span class="line">  <span class="title class_">TableColumn</span>,</span><br><span class="line">  <span class="title class_">DatePicker</span>,</span><br><span class="line">  <span class="title class_">TimeSelect</span>,</span><br><span class="line">  <span class="title class_">TimePicker</span>,</span><br><span class="line">  <span class="title class_">Popover</span>,</span><br><span class="line">  <span class="title class_">Tooltip</span>,</span><br><span class="line">  <span class="title class_">Breadcrumb</span>,</span><br><span class="line">  <span class="title class_">BreadcrumbItem</span>,</span><br><span class="line">  <span class="title class_">Form</span>,</span><br><span class="line">  <span class="title class_">FormItem</span>,</span><br><span class="line">  <span class="title class_">Tabs</span>,</span><br><span class="line">  <span class="title class_">TabPane</span>,</span><br><span class="line">  <span class="title class_">Tag</span>,</span><br><span class="line">  <span class="title class_">Tree</span>,</span><br><span class="line">  <span class="title class_">Alert</span>,</span><br><span class="line">  <span class="title class_">Slider</span>,</span><br><span class="line">  <span class="title class_">Icon</span>,</span><br><span class="line">  <span class="title class_">Row</span>,</span><br><span class="line">  <span class="title class_">Col</span>,</span><br><span class="line">  <span class="title class_">Upload</span>,</span><br><span class="line">  <span class="title class_">Progress</span>,</span><br><span class="line">  <span class="title class_">Spinner</span>,</span><br><span class="line">  <span class="title class_">Badge</span>,</span><br><span class="line">  <span class="title class_">Card</span>,</span><br><span class="line">  <span class="title class_">Rate</span>,</span><br><span class="line">  <span class="title class_">Steps</span>,</span><br><span class="line">  <span class="title class_">Step</span>,</span><br><span class="line">  <span class="title class_">Carousel</span>,</span><br><span class="line">  <span class="title class_">CarouselItem</span>,</span><br><span class="line">  <span class="title class_">Collapse</span>,</span><br><span class="line">  <span class="title class_">CollapseItem</span>,</span><br><span class="line">  <span class="title class_">Cascader</span>,</span><br><span class="line">  <span class="title class_">ColorPicker</span>,</span><br><span class="line">  <span class="title class_">Transfer</span>,</span><br><span class="line">  <span class="title class_">Container</span>,</span><br><span class="line">  <span class="title class_">Header</span>,</span><br><span class="line">  <span class="title class_">Aside</span>,</span><br><span class="line">  <span class="title class_">Main</span>,</span><br><span class="line">  <span class="title class_">Footer</span>,</span><br><span class="line">  <span class="title class_">Timeline</span>,</span><br><span class="line">  <span class="title class_">TimelineItem</span>,</span><br><span class="line">  <span class="title class_">Link</span>,</span><br><span class="line">  <span class="title class_">Divider</span>,</span><br><span class="line">  <span class="title class_">Image</span>,</span><br><span class="line">  <span class="title class_">Calendar</span>,</span><br><span class="line">  <span class="title class_">Backtop</span>,</span><br><span class="line">  <span class="title class_">PageHeader</span>,</span><br><span class="line">  <span class="title class_">CascaderPanel</span>,</span><br><span class="line">  <span class="title class_">Loading</span>,</span><br><span class="line">  <span class="title class_">MessageBox</span>,</span><br><span class="line">  <span class="title class_">Message</span>,</span><br><span class="line">  <span class="title class_">Notification</span></span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Pagination</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Dialog</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Autocomplete</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Dropdown</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">DropdownMenu</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">DropdownItem</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Menu</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Submenu</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">MenuItem</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">MenuItemGroup</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Input</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">InputNumber</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Radio</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">RadioGroup</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">RadioButton</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Checkbox</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">CheckboxButton</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">CheckboxGroup</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Switch</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Select</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Option</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">OptionGroup</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Button</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">ButtonGroup</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Table</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">TableColumn</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">DatePicker</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">TimeSelect</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">TimePicker</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Popover</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Tooltip</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Breadcrumb</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">BreadcrumbItem</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Form</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">FormItem</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Tabs</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">TabPane</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Tag</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Tree</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Alert</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Slider</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Icon</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Row</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Col</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Upload</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Progress</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Spinner</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Badge</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Card</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Rate</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Steps</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Step</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Carousel</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">CarouselItem</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Collapse</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">CollapseItem</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Cascader</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">ColorPicker</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Transfer</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Container</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Header</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Aside</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Main</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Footer</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Timeline</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">TimelineItem</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Link</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Divider</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Image</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Calendar</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Backtop</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">PageHeader</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">CascaderPanel</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Loading</span>.<span class="property">directive</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$loading</span> = <span class="title class_">Loading</span>.<span class="property">service</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$msgbox</span> = <span class="title class_">MessageBox</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$alert</span> = <span class="title class_">MessageBox</span>.<span class="property">alert</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$confirm</span> = <span class="title class_">MessageBox</span>.<span class="property">confirm</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$prompt</span> = <span class="title class_">MessageBox</span>.<span class="property">prompt</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$notify</span> = <span class="title class_">Notification</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$message</span> = <span class="title class_">Message</span>;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>因风道感谢，情至笔载援<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/09/24/python%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2023-09-24T12:05:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/09/24/python%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F/">python实现查询系统</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spider</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/11/28/vue-create/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/09/23/python-%E5%AE%9E%E7%8E%B0%E7%82%B9%E8%B5%9E%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2023-09-23T06:06:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/11/15/Ajax/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ajax</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/09/23/python-%E5%AE%9E%E7%8E%B0%E7%82%B9%E8%B5%9E%E7%B3%BB%E7%BB%9F/">python 实现点赞系统</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spider</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/09/22/python%E5%AE%9E%E7%8E%B0%E6%8A%BD%E5%A5%96%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2023-09-22T13:20:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/09/22/python%E5%AE%9E%E7%8E%B0%E6%8A%BD%E5%A5%96%E7%B3%BB%E7%BB%9F/">python实现抽奖系统</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spider</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/09/21/spider-%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%8B%B1%E9%9B%84%E7%85%A7%E7%89%87/" class="archive-article-date">
-  	<time datetime="2023-09-21T14:07:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/09/21/spider-%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%8B%B1%E9%9B%84%E7%85%A7%E7%89%87/">spider_王者荣耀英雄照片</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spider</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/09/21/spider-NBA/" class="archive-article-date">
-  	<time datetime="2023-09-21T14:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/09/21/spider-NBA/">spider_NBA</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spider</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -374,9 +383,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
