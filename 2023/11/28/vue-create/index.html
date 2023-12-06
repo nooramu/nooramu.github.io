@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>vue_create | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 项目创建1. 已有node, npm 安装vue-cli:1npm i -g @vue&#x2F;cli-init">
+  <meta name="description" content="VUE-Create1. 项目创建1. 已有node, npm 安装vue-cli:1npm i -g @vue&#x2F;cli-init">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue_create">
 <meta property="og:url" content="http://example.com/2023/11/28/vue-create/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1. 项目创建1. 已有node, npm 安装vue-cli:1npm i -g @vue&#x2F;cli-init">
+<meta property="og:description" content="VUE-Create1. 项目创建1. 已有node, npm 安装vue-cli:1npm i -g @vue&#x2F;cli-init">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-28T11:33:51.000Z">
-<meta property="article:modified_time" content="2023-12-02T05:19:25.860Z">
+<meta property="article:modified_time" content="2023-12-06T09:16:28.683Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -171,7 +171,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-项目创建"><a href="#1-项目创建" class="headerlink" title="1. 项目创建"></a>1. 项目创建</h1><h3 id="1-已有node-npm-安装vue-cli"><a href="#1-已有node-npm-安装vue-cli" class="headerlink" title="1. 已有node, npm 安装vue-cli:"></a>1. 已有node, npm 安装vue-cli:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g @vue/cli-init </span><br></pre></td></tr></table></figure>
+        <h1 id="VUE-Create"><a href="#VUE-Create" class="headerlink" title="VUE-Create"></a>VUE-Create</h1><h2 id="1-项目创建"><a href="#1-项目创建" class="headerlink" title="1. 项目创建"></a>1. 项目创建</h2><h3 id="1-已有node-npm-安装vue-cli"><a href="#1-已有node-npm-安装vue-cli" class="headerlink" title="1. 已有node, npm 安装vue-cli:"></a>1. 已有node, npm 安装vue-cli:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g @vue/cli-init </span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
@@ -183,7 +183,7 @@
 <p>其他基本上默认</p>
 <h3 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行:"></a>3. 运行:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd vue01</span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
 
-<h1 id="2-初始化："><a href="#2-初始化：" class="headerlink" title="2. 初始化："></a>2. 初始化：</h1><ol>
+<h2 id="2-初始化："><a href="#2-初始化：" class="headerlink" title="2. 初始化："></a>2. 初始化：</h2><ol>
 <li><p>删除components文件夹下的helloworld文件,views文件夹下的文件，清楚App.vue的样式</p>
 </li>
 <li><p>在views下创建login文件夹，再创建LoginView.vue文件（vue5.0命名需要<strong>大驼峰命名法</strong>）：</p>
@@ -194,7 +194,7 @@
 <li><p>找到router文件夹下的index.ts文件，删除相关对已删除文件的引用，把我们views下刚创建的文件的路径加上去</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">routes</span>: <span class="title class_">Array</span>&lt;<span class="title class_">RouteRecordRaw</span>&gt; = [</span><br><span class="line"> </span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;login&#x27;</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&#x27;../views/login/LoginView.vue&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="3-修改默认样式"><a href="#3-修改默认样式" class="headerlink" title="3. 修改默认样式"></a>3. 修改默认样式</h1><ol>
+<h2 id="3-修改默认样式"><a href="#3-修改默认样式" class="headerlink" title="3. 修改默认样式"></a>3. 修改默认样式</h2><ol>
 <li>添加LoginView.vue样式</li>
 </ol>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.login&#123;</span><br><span class="line">    background-color: #c4c4d8;</span><br><span class="line">    height: 100%;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">  html,body,#app&#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -215,7 +215,7 @@
 </ol>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./main.scss&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="4-Element-Plus项目集成"><a href="#4-Element-Plus项目集成" class="headerlink" title="4. Element Plus项目集成"></a>4. Element Plus项目集成</h1><ol>
+<h2 id="4-Element-Plus项目集成"><a href="#4-Element-Plus项目集成" class="headerlink" title="4. Element Plus项目集成"></a>4. Element Plus项目集成</h2><ol>
 <li><p>安装</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install element-plus --save</span><br></pre></td></tr></table></figure>
 </li>
