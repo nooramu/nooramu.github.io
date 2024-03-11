@@ -168,54 +168,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>github 多人协作</p>
-<ol>
-<li><p>leader 创建新仓库，邀请协作者</p>
-</li>
-<li><p>添加ssh</p>
-<ol>
-<li><p>检查你电脑上是否有SSH Key</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh` 或者用`~/.ssh ls</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我有，直接在github settings里面添加SSH keys，内容是id_rsa.pub文件里面的内容</p>
-</li>
-<li><p>测试以下SSH</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>输出：<strong>Hi “用户名”! You’ve successfully authenticated, but GitHub does not provide shell access.</strong></p>
-<p>*成功**！</p>
-</li>
-<li><p>测试的时候遇到一个问题，它要求我Enter passphrase for key ‘&#x2F;Users&#x2F;xxx&#x2F;.ssh&#x2F;id_rsa‘，但是这个SSH是我两年前创建的，当时生成key的时候输入了密码，现在想取消的话，输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -p</span><br></pre></td></tr></table></figure>
-
-<p>在输入新密码的时候直接回车就可以</p>
-</li>
-</ol>
-</li>
-<li><p>在本地创建一个目录</p>
-<ol>
-<li><pre><code>git init
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```text</span><br><span class="line">   git clone &lt;url&gt;</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><p>显示所有本地分支</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建并切换新分支</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加文件到本地仓库</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;filename&gt;  # 将指定文件添加到暂存区中</span><br><span class="line">git commit -m &quot;xxx&quot;  # 把暂存区中的文件提交到本地仓库中并添加描述信息</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将本地仓库的分支提交至相应的远程仓库分支</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin dev</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在github上就可以看到改变了</p>
-</li>
-</ol>
-</li>
-</ol>
-
+        <h2 id="github-多人协作"><a href="#github-多人协作" class="headerlink" title="github 多人协作"></a>github 多人协作</h2>
+        
+          <a class="article-more-a" href="/2024/03/11/github-collaborate/#more">more >></a>
+        
       
 
       
@@ -277,13 +233,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
-
-<p>项目目录下添加三个配置文件：</p>
+        <p>项目目录下添加三个配置文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.env				#这个文件里面的变量，在开发模式和生产模式都生效</span><br><span class="line">.env.development	#只在开发环境生效</span><br><span class="line">.env.production		#只在生产环境生效</span><br></pre></td></tr></table></figure>
-
-<p>在App.vue的template里添加路由匹配，放置页面</p>
-
+        
+          <a class="article-more-a" href="/2024/02/03/vue-study-01/#more">more >></a>
+        
       
 
       
